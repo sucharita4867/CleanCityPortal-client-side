@@ -8,7 +8,9 @@ const Navbar = () => {
       <li className="text-base">
         <NavLink
           to="/"
-          className={({ isActive }) => (isActive ? "text-[#F8B864] " : "")}
+          className={({ isActive }) =>
+            isActive ? "text-[#F8B864] " : "text-black"
+          }
         >
           Home
         </NavLink>
@@ -17,7 +19,9 @@ const Navbar = () => {
       <li className="text-base">
         <NavLink
           to="/allIssues"
-          className={({ isActive }) => (isActive ? "text-[#F8B864] " : "")}
+          className={({ isActive }) =>
+            isActive ? "text-[#F8B864] " : "text-black"
+          }
         >
           All Issues
         </NavLink>
@@ -27,9 +31,9 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <div className="navbar w-11/12 mx-auto bg-base-100 shadow-sm">
+      <div className="navbar md:w-11/12 md:mx-auto">
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown text-black">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -49,9 +53,10 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content  rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content text-black rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
+              <li>home</li>
             </ul>
           </div>
           <a className="btn btn-ghost text-2xl poppins flex items-center gap-2 text-[#F8B864]">
@@ -66,14 +71,14 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end gap-3">
+        <div className="navbar-end md:gap-3 gap-1">
           <div className="">
-            <a className="btn px-8 text-center bg-[#F8B864] rounded-full text-base text-white font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]">
+            <a className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]">
               Login{" "}
             </a>
           </div>
           <div>
-            <a className="btn px-6 text-center bg-[#F8B864] rounded-full text-base text-white font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]">
+            <a className="btn md:px-6 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]">
               Register{" "}
             </a>
           </div>

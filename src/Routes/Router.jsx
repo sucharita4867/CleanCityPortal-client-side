@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router";
 import HomeLayout from "../Layouts/HomeLayout";
 import AllIssues from "../Pages/AllIssues";
 import HomePage from "../Pages/HomePage";
+import HomeIssues from "../Pages/Homeissues";
+import Loading from "../Components/Loading";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,8 @@ const router = createBrowserRouter([
       {
         path: "allIssues",
         element: <AllIssues />,
+        loader: () => fetch("http://localhost:3000/allIssues"),
+        // HydrateFallback: <Loading />,
       },
     ],
   },

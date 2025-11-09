@@ -10,6 +10,7 @@ import banner3 from "../assets/clening3.webp";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import "./style.css";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";

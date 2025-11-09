@@ -1,0 +1,102 @@
+[
+  {
+    "title": "Overflowing garbage on Road 21",
+    "category": "Garbage",
+    "location": "Mohakhali, Dhaka",
+    "description": "Garbage has not been collected for 5 days, creating a bad smell and health risk.",
+    "image": "https://i.ibb.co/21ryrYTz/c9a144b70e175c0361c6e2725677e55a.webp",
+    "amount": 200,
+    "email": "rahim.khan@mail.com",
+    "date": "2025-10-26"
+  },
+  {
+    "title": "Illegal construction blocking footpath",
+    "category": "Illegal Construction",
+    "location": "Dhanmondi 15, Dhaka",
+    "description": "Half of the footpath is blocked by construction materials, making it hard for pedestrians.",
+    "image": "https://i.ibb.co/FbbywFbR/a45a14b3f808ee043ad21a3d6d0aa11e.webp",
+    "amount": 500,
+    "email": "sadia.hasan@mail.com",
+    "date": "2025-11-02"
+  },
+  {
+    "title": "Broken streetlight near park",
+    "category": "Broken Public Property",
+    "location": "Banani Block C, Dhaka",
+    "description": "The streetlight in front of the park has been broken for two weeks, causing darkness at night.",
+    "image": "https://i.ibb.co/qbwZKyZ/download.webp",
+    "amount": 150,
+    "email": "tariq.ahmed@mail.com",
+    "date": "2025-11-03"
+  },
+  {
+    "title": "Severe road damage near bus stand",
+    "category": "Road Damage",
+    "location": "Uttara Sector 10, Dhaka",
+    "description": "Large potholes on the main road are causing traffic jams and vehicle damage.",
+    "image": "https://i.ibb.co/9mnkW4Ry/TNIE-import-2019-9-16-original-DANGEROUSf.webp",
+    "amount": 300,
+    "email": "mim.hossain@mail.com",
+    "date": "2025-11-04"
+  },
+  {
+    "title": "Uncollected garbage near school",
+    "category": "Garbage",
+    "location": "Mirpur 12, Dhaka",
+    "description": "Garbage near the local school gate has not been collected for a week, attracting flies.",
+    "image": "https://i.ibb.co/4ZGfch1R/06463bb1b9864de5a1fa50375f941ab0.webp",
+    "amount": 180,
+    "email": "arif.rahman@mail.com",
+    "date": "2025-11-05"
+  },
+  {
+    "title": "Unauthorized shop on footpath",
+    "category": "Illegal Construction",
+    "location": "Farmgate, Dhaka",
+    "description": "A small shop has been built illegally on the footpath, blocking public movement.",
+    "image": "https://i.ibb.co/4wLbw46w/Footpath-shops-7489ca6a1d3efafc481ce8bd5f843d3e.webp",
+    "amount": 450,
+    "email": "nila.akther@mail.com",
+    "date": "2025-11-06"
+  },
+  {
+    "title": "Broken bench in public park",
+    "category": "Broken Public Property",
+    "location": "Ramna Park, Dhaka",
+    "description": "Several benches in the park are damaged and unsafe for sitting.",
+    "image": "https://i.ibb.co/DgD2x1GJ/135374020-old-broken-bench-in-the-park-1.webp",
+    "amount": 120,
+    "email": "sabbir.alam@mail.com",
+    "date": "2025-11-06"
+  },
+  {
+    "title": "Damaged road near railway crossing",
+    "category": "Road Damage",
+    "location": "Khilgaon, Dhaka",
+    "description": "The road near the railway crossing has cracks and potholes due to heavy trucks.",
+    "image": "https://i.ibb.co/Fb8Nd5S0/images-1.webp",
+    "amount": 350,
+    "email": "sumaiya.karim@mail.com",
+    "date": "2025-11-07"
+  },
+  {
+    "title": "Garbage overflow at market area",
+    "category": "Garbage",
+    "location": "New Market, Dhaka",
+    "description": "Dustbins in the market area are overflowing, spreading bad odor.",
+    "image": "https://i.ibb.co/fGzdc1tp/HY05-P3-LEAD-GARBAGE.webp",
+    "amount": 220,
+    "email": "nayeem.islam@mail.com",
+    "date": "2025-11-08"
+  },
+  {
+    "title": "Cracked road after rainfall",
+    "category": "Road Damage",
+    "location": "Tejgaon Industrial Area, Dhaka",
+    "description": "Heavy rainfall has caused cracks on the main road, making it unsafe for vehicles.",
+    "image": "https://i.ibb.co/LXPpGKW2/national-highway-44-153327984-16x9.webp",
+    "amount": 400,
+    "email": "fatema.yasmin@mail.com",
+    "date": "2025-11-09"
+  }
+]

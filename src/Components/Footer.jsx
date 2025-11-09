@@ -11,7 +11,7 @@ const Footer = () => {
           <a className="font-semibold text-2xl poppins flex items-center gap-2 text-[#F8B864]">
             <span>CleanHub</span>
           </a>
-          <p className="text-white poppins w-[70%] mx-auto">
+          <p className="text-white poppins md:w-[70%] mx-auto">
             CleanHub is a community-driven platform dedicated to keeping our
             surroundings clean and safe. Users can report local cleanliness
             issues like garbage piles, broken roads, or illegal dumping, and
@@ -20,11 +20,11 @@ const Footer = () => {
           </p>
           <div className="w-full h-px bg-gray-700 my-6"></div>
           <div className="w-full">
-            <div className="flex justify-between items-center  ">
+            <div className="md:flex justify-between items-center  ">
               <p className="text-sm text-gray-400  text-center">
                 Copyright 2025 — All rights reserved.
               </p>
-              <div className="flex text-2xl gap-3 text-gray-400">
+              <div className="flex mt-2 md:mt-0 text-2xl justify-center items-center gap-3 text-gray-400">
                 <Link>
                   <FaFacebook />
                 </Link>
