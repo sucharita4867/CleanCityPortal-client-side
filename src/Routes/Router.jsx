@@ -4,6 +4,7 @@ import AllIssues from "../Pages/AllIssues";
 import HomePage from "../Pages/HomePage";
 import HomeIssues from "../Pages/Homeissues";
 import Loading from "../Components/Loading";
+import IssuesDetails from "../Pages/issuesDetails";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
         element: <AllIssues />,
         loader: () => fetch("http://localhost:3000/allIssues"),
         // HydrateFallback: <Loading />,
+      },
+      {
+        path: "/issuesDetails/:id",
+        element: <IssuesDetails />,
       },
     ],
   },

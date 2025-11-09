@@ -51,7 +51,7 @@ const AllIssues = () => {
                 Amount:{" "}
                 <span className="text-green-600 font-bold">{issue.amount}</span>
               </p>
-              <Link to={`/issue/${issue._id}`}>
+              <Link to={`/issuesDetails/${issue._id}`}>
                 <button className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864]  hover:bg-[white] w-full hover:text-[#F8B864]">
                   See Details
                 </button>
