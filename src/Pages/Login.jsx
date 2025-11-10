@@ -1,48 +1,74 @@
-import React from "react";
+import React, { use } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
+  const { loginUser, setUser, googleLogin } = use(AuthContext);
+
   const handelLogin = (e) => {
     e.preventDefault();
-    const email = e.target.email.value
-    const password = e.target.password.value
-    console.log(email,password)
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    loginUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        // console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage, errorCode);
+      });
+  };
+
+  const handleGoogle = () => {
+    console.log("google btn clicked");
+    googleLogin()
+      .then((result) => {
+        console.log("successfull", result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className="text-black flex justify-center items-center my-8">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl border border-black">
-        <div className="card-body">
-          <h1 className="text-[#464646] poppins text-center font-semibold text-2xl ">
-            Please Login!
-          </h1>
+      <div className="card bg-base-100 pt-4 w-full max-w-sm shrink-0 shadow-2xl border border-black">
+        <h1 className="text-[#464646] poppins text-center font-semibold text-2xl ">
+          Please Login!
+        </h1>
+        <form onSubmit={handelLogin} className="card-body pt-0">
           <fieldset className="fieldset">
-            <form onSubmit={handelLogin}>
-              <label className="label">Email</label>
-              <input
-                name="email"
-                type="email"
-                className="rounded-full input"
-                placeholder="Email"
-                required
-              />
-              <label className="label">Password</label>
-              <input
-                name="password"
-                type="password"
-                className="input rounded-full"
-                placeholder="Password"
-                required
-              />
-              <button className="btn mt-4 w-full md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]">
-                Login
-              </button>
-            </form>
-            <button className="btn bg-white text-black  rounded-full border border-[#F8B864]">
+            {/* email */}
+            <label className="label">Email</label>
+            <input
+              name="email"
+              type="email"
+              className="rounded-full input"
+              placeholder="Email"
+              required
+            />
+            {/* password */}
+            <label className="label">Password</label>
+            <input
+              name="password"
+              type="password"
+              className="input rounded-full"
+              placeholder="Password"
+              required
+            />
+            <button className="btn mt-4 w-full md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]">
+              Login
+            </button>
+            <button
+              onClick={handleGoogle}
+              className="btn bg-white text-black  rounded-full border border-[#F8B864]"
+            >
               <FcGoogle className="text-xl" />
               Login with Google
             </button>
-
             <p className="text-center text-sm font-medium">
               Don't have an account?
               <span className="font-bold text-blue-600 hover:underline">
@@ -50,7 +76,7 @@ const Login = () => {
               </span>
             </p>
           </fieldset>
-        </div>
+        </form>
       </div>
     </div>
   );

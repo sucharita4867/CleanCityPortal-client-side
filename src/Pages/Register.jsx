@@ -2,9 +2,10 @@ import React, { use } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser, setUser } = use(AuthContext);
+  const { createUser, setUser, googleLogin } = use(AuthContext);
   const handelRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -12,6 +13,17 @@ const Register = () => {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
     console.log({ name, email, photo, password });
+    const isValidPassword =
+      /[A-Z]/.test(password) && /[a-z]/.test(password) && password.length >= 6;
+
+    if (!isValidPassword) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password must contain at least one uppercase, one lowercase letter and be at least 6 characters long.",
+      });
+      return;
+    }
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -21,16 +33,27 @@ const Register = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage);
+        alert(errorMessage, errorCode);
       });
   };
+
+  const handleGoogle = () => {
+    googleLogin()
+      .then((result) => {
+        console.log("successfull", result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="text-black flex justify-center items-center my-4">
-      <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl border border-black">
+      <div className="card bg-base-100 pt-4 w-full max-w-sm shrink-0 shadow-2xl border border-black">
         <h1 className="text-[#464646] poppins text-center font-semibold text-2xl ">
           Please Register!
         </h1>
-        <form onSubmit={handelRegister} className="card-body">
+        <form onSubmit={handelRegister} className="card-body pt-0">
           <fieldset className="fieldset ">
             {/* name */}
             <label className="label">Name</label>
@@ -74,7 +97,10 @@ const Register = () => {
             >
               Register
             </button>
-            <button className="btn bg-white text-black  rounded-full border border-[#F8B864]">
+            <button
+              onClick={handleGoogle}
+              className="btn bg-white text-black  rounded-full border border-[#F8B864]"
+            >
               <FcGoogle className="text-xl" />
               Login with Google
             </button>

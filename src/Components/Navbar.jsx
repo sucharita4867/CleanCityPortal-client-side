@@ -1,8 +1,29 @@
-import React from "react";
+import React, { use } from "react";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 // import logo from "../assets/logo.jpg";
 
 const Navbar = () => {
+  const { user, logOut } = use(AuthContext);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          title: "Logout successfully!",
+          icon: "success",
+          draggable: true,
+        });
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Logout failed. Please try again!",
+        });
+      });
+  };
   const links = (
     <>
       <li className="text-base">
@@ -69,6 +90,7 @@ const Navbar = () => {
               <li>home</li>
             </ul>
           </div>
+
           <a className="btn btn-ghost text-2xl poppins flex items-center gap-2 text-[#F8B864]">
             {/* <img
               src={logo}
@@ -77,18 +99,28 @@ const Navbar = () => {
             /> */}
             <span>CleanHub</span>
           </a>
+          <div className="text-black font-semibold ">{user && user.email}</div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end md:gap-3 gap-1">
           <div className="">
-            <Link
-              to="/auth/login"
-              className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
-            >
-              Login{" "}
-            </Link>
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
+              >
+                Logout{" "}
+              </button>
+            ) : (
+              <Link
+                to="/auth/login"
+                className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
+              >
+                Login{" "}
+              </Link>
+            )}
           </div>
           <div>
             <Link

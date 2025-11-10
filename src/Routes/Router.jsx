@@ -4,7 +4,7 @@ import AllIssues from "../Pages/AllIssues";
 import HomePage from "../Pages/HomePage";
 import HomeIssues from "../Pages/Homeissues";
 import Loading from "../Components/Loading";
-import IssuesDetails from "../Pages/issuesDetails";
+import IssuesDetails from "../Pages/IssuesDetails";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
@@ -27,6 +27,8 @@ const router = createBrowserRouter([
       {
         path: "/issuesDetails/:id",
         element: <IssuesDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/allIssues/${params.id}`),
       },
       {
         path: "/auth/register",

@@ -5,11 +5,11 @@ import { Link } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Footer = () => {
-  const { user } = use(AuthContext);
+
   return (
     <div className="mt-10 bg-[#111111]">
       <footer className=" text-primary-content px-10 py-12 text-center">
-        <div>{user && user.email}</div>
+
         <div className="max-w-5xl mx-auto">
           <a className="font-semibold text-2xl poppins flex justify-center items-center gap-2 text-[#F8B864] mb-4">
             <span>CleanHub</span>
