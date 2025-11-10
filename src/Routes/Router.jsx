@@ -7,6 +7,7 @@ import Loading from "../Components/Loading";
 import IssuesDetails from "../Pages/issuesDetails";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import AuthLayout from "../Layouts/AuthLayout";
 
 const router = createBrowserRouter([
   {
@@ -28,11 +29,7 @@ const router = createBrowserRouter([
         element: <IssuesDetails />,
       },
       {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
+        path: "/auth/register",
         element: <Register />,
       },
     ],
@@ -40,7 +37,13 @@ const router = createBrowserRouter([
 
   {
     path: "/auth",
-    element: <h2>authentication layout</h2>,
+    element: <AuthLayout />,
+    children: [
+      {
+        path: "/auth/login",
+        element: <Login />,
+      },
+    ],
   },
   {
     path: "/*",

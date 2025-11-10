@@ -84,7 +84,7 @@ const Navbar = () => {
         <div className="navbar-end md:gap-3 gap-1">
           <div className="">
             <Link
-              to="/login"
+              to="/auth/login"
               className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
             >
               Login{" "}
@@ -92,7 +92,7 @@ const Navbar = () => {
           </div>
           <div>
             <Link
-              to="/register"
+              to="/auth/register"
               className="btn md:px-6 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
             >
               Register{" "}
