@@ -23,7 +23,17 @@ const Navbar = () => {
             isActive ? "text-[#F8B864] " : "text-black"
           }
         >
-          All Issues
+          AllIssues
+        </NavLink>
+      </li>
+      <li className="text-base">
+        <NavLink
+          to="/issuesDetails/:id"
+          className={({ isActive }) =>
+            isActive ? "text-[#F8B864] " : "text-black"
+          }
+        >
+          IssuesDetails
         </NavLink>
       </li>
     </>
@@ -73,14 +83,20 @@ const Navbar = () => {
         </div>
         <div className="navbar-end md:gap-3 gap-1">
           <div className="">
-            <a className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]">
+            <Link
+              to="/login"
+              className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
+            >
               Login{" "}
-            </a>
+            </Link>
           </div>
           <div>
-            <a className="btn md:px-6 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]">
+            <Link
+              to="/register"
+              className="btn md:px-6 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
+            >
               Register{" "}
-            </a>
+            </Link>
           </div>
         </div>
       </div>

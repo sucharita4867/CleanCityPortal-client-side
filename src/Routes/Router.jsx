@@ -5,6 +5,8 @@ import HomePage from "../Pages/HomePage";
 import HomeIssues from "../Pages/Homeissues";
 import Loading from "../Components/Loading";
 import IssuesDetails from "../Pages/issuesDetails";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/issuesDetails/:id",
         element: <IssuesDetails />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
