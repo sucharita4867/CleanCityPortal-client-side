@@ -2,6 +2,7 @@ import React, { use } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const { loginUser, setUser, googleLogin } = use(AuthContext);
@@ -14,12 +15,18 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        // console.log(user);
+        Swal.fire({
+          title: "Login successfully!",
+          icon: "success",
+          draggable: true,
+        });
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage, errorCode);
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Invalid email or password. Please try again.",
+        });
       });
   };
 

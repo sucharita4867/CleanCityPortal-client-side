@@ -28,12 +28,20 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        // console.log(user);
+        Swal.fire({
+          title: "Register successfully!",
+          icon: "success",
+          draggable: true,
+        });
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage, errorCode);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: { errorCode, errorMessage },
+        });
       });
   };
 

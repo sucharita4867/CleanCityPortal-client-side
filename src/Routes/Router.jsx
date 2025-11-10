@@ -8,6 +8,8 @@ import IssuesDetails from "../Pages/IssuesDetails";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
+import AddIssue from "../Pages/Addissue";
+import PrivateRoute from "../Provider/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,17 +26,30 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:3000/allIssues"),
         // HydrateFallback: <Loading />,
       },
-      {
-        path: "/issuesDetails/:id",
-        element: <IssuesDetails />,
-        loader: ({ params }) =>
-          fetch(`http://localhost:3000/allIssues/${params.id}`),
-      },
+
       {
         path: "/auth/register",
         element: <Register />,
       },
+      {
+        path: "/addIssue",
+        element: (
+          <PrivateRoute>
+            <AddIssue />
+          </PrivateRoute>
+        ),
+      },
     ],
+  },
+  {
+    path: "/issuesDetails/:id",
+    element: (
+      <PrivateRoute>
+        <IssuesDetails />
+      </PrivateRoute>
+    ),
+    loader: ({ params }) =>
+      fetch(`http://localhost:3000/allIssues/${params.id}`),
   },
 
   {

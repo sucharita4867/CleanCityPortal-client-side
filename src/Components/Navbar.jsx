@@ -38,23 +38,27 @@ const Navbar = () => {
       </li>
 
       <li className="text-base">
-        <NavLink
-          to="/allIssues"
-          className={({ isActive }) =>
-            isActive ? "text-[#F8B864] " : "text-black"
-          }
-        >
-          AllIssues
-        </NavLink>
+        {user ? (
+          <NavLink
+            to="/allIssues"
+            className={({ isActive }) =>
+              isActive ? "text-[#F8B864] " : "text-black"
+            }
+          >
+            AllIssues
+          </NavLink>
+        ) : (
+          ""
+        )}
       </li>
       <li className="text-base">
         <NavLink
-          to="/issuesDetails/:id"
+          to="/addIssue"
           className={({ isActive }) =>
             isActive ? "text-[#F8B864] " : "text-black"
           }
         >
-          IssuesDetails
+          AddIssue
         </NavLink>
       </li>
     </>
