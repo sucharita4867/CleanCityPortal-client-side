@@ -1,15 +1,44 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddIssue = () => {
   const { user } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const formData={
-      name: e.target.name.value
-    }
-
+    e.preventDefault();
+    const formData = {
+      title: e.target.title.value,
+      category: e.target.category.value,
+      location: e.target.location.value,
+      description: e.target.description.value,
+      image: e.target.image.value,
+      amount: e.target.amount.value,
+      date: new Date(),
+      email: user.email,
+    };
+    fetch("http://localhost:3000/allIssues", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        Swal.fire({
+          title: "Issue added successfully!",
+          icon: "success",
+          draggable: true,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: { error },
+        });
+      });
   };
 
   return (
@@ -19,7 +48,7 @@ const AddIssue = () => {
           Report a New Issue
         </h2>
 
-        <form className="space-y-5">
+        <form onSubmit={handleSubmit} className="space-y-5">
           {/* title */}
           <div>
             <label className="block text-gray-700 font-medium text-base mb-1">
@@ -92,8 +121,8 @@ const AddIssue = () => {
               required
             />
           </div>
-          {/* Amount */}
-          <div>
+          {/* amount */}
+          <div className="flex-1">
             <label className="block text-gray-700 text-base font-medium mb-1">
               Amount
             </label>
@@ -102,11 +131,25 @@ const AddIssue = () => {
               name="amount"
               placeholder="Enter estimated budget"
               required
-              className="w-full px-4 py-2 border input rounded-full text-black focus:outline-none focus:border-[#F8B864] focus:ring-1 focus:ring-[#F8B864]"
+              className="w-full px-4 input py-2 border rounded-full text-black focus:outline-none focus:border-[#F8B864] focus:ring-1 focus:ring-[#F8B864] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
             />
           </div>
+
+          {/* date */}
+          {/* <div className="flex-1">
+              <label className="block text-gray-700 text-base font-medium mb-1">
+                Date
+              </label>
+              <input
+                type="text"
+                name="date"
+                placeholder="Enter date"
+                className="w-full input px-4 py-2 border rounded-full text-black focus:outline-none focus:border-[#F8B864] focus:ring-1 focus:ring-[#F8B864]"
+              />
+            </div> */}
+
           {/* Email */}
-          <div>
+          {/* <div>
             <label className="block text-gray-700 text-base font-medium mb-1">
               Email
             </label>
@@ -119,11 +162,10 @@ const AddIssue = () => {
               value={user?.email || ""}
               readOnly
             />
-          </div>
+          </div> */}
           {/* btn */}
           <div className="pt-4">
             <button
-              onSubmit={handleSubmit}
               type="submit"
               className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864] w-full"
             >
