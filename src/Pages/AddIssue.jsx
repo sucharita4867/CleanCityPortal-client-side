@@ -149,7 +149,7 @@ const AddIssue = () => {
             </div> */}
 
           {/* Email */}
-          {/* <div>
+          <div>
             <label className="block text-gray-700 text-base font-medium mb-1">
               Email
             </label>
@@ -162,7 +162,7 @@ const AddIssue = () => {
               value={user?.email || ""}
               readOnly
             />
-          </div> */}
+          </div>
           {/* btn */}
           <div className="pt-4">
             <button
