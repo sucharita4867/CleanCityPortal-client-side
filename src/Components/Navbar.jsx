@@ -1,11 +1,13 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { FaUserCircle } from "react-icons/fa";
 // import logo from "../assets/logo.jpg";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
+  const [showLogout, setShowLogout] = useState(false);
 
   const handleLogout = () => {
     logOut()
@@ -15,6 +17,7 @@ const Navbar = () => {
           icon: "success",
           draggable: true,
         });
+        setShowLogout(false);
       })
       .catch(() => {
         Swal.fire({
@@ -40,12 +43,12 @@ const Navbar = () => {
       <li className="text-base">
         {user ? (
           <NavLink
-            to="/allIssues"
+            to="/addIssue"
             className={({ isActive }) =>
               isActive ? "text-[#F8B864] " : "text-black"
             }
           >
-            AllIssues
+            AddIssue
           </NavLink>
         ) : (
           ""
@@ -53,12 +56,12 @@ const Navbar = () => {
       </li>
       <li className="text-base">
         <NavLink
-          to="/addIssue"
+          to="/allIssues"
           className={({ isActive }) =>
             isActive ? "text-[#F8B864] " : "text-black"
           }
         >
-          AddIssue
+          AllIssues
         </NavLink>
       </li>
     </>
@@ -109,31 +112,50 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end md:gap-3 gap-1">
-          <div className="">
-            {user ? (
-              <button
-                onClick={handleLogout}
-                className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
-              >
-                Logout{" "}
-              </button>
-            ) : (
+          {user ? (
+            <div className="relative">
+              {user?.photoURL ? (
+                <img
+                  onClick={() => setShowLogout(!showLogout)}
+                  src={user.photoURL}
+                  alt="User"
+                  className="w-12 h-12 rounded-full cursor-pointer border-2 border-[#F8B864]"
+                />
+              ) : (
+                <FaUserCircle
+                  onClick={() => setShowLogout(!showLogout)}
+                  className="w-12 h-12 text-[#F8B864] cursor-pointer"
+                />
+              )}
+
+              {showLogout && (
+                // <div className="bg-black h-3xl w-3xl">
+                <button
+                  onClick={handleLogout}
+                  className="absolute right-0 mt-2 bg-[#F8B864] text-white font-semibold py-1 px-4 rounded-full hover:bg-white hover:text-[#F8B864] hover:border hover:border-[#F8B864]"
+                >
+                  Logout
+                </button>
+                // </div>
+              )}
+            </div>
+          ) : (
+            <>
               <Link
                 to="/auth/login"
                 className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
               >
-                Login{" "}
+                Login
               </Link>
-            )}
-          </div>
-          <div>
-            <Link
-              to="/auth/register"
-              className="btn md:px-6 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
-            >
-              Register{" "}
-            </Link>
-          </div>
+
+              <Link
+                to="/auth/register"
+                className="btn md:px-6 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </div>

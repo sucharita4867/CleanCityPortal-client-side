@@ -1,11 +1,13 @@
 import React, { use } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
   const { loginUser, setUser, googleLogin } = use(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handelLogin = (e) => {
     e.preventDefault();
@@ -20,6 +22,7 @@ const Login = () => {
           icon: "success",
           draggable: true,
         });
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch(() => {
         Swal.fire({
