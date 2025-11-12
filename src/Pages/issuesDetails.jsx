@@ -6,6 +6,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import Swal from "sweetalert2";
 
 const DetailsPage = () => {
   const issue = useLoaderData();
@@ -26,7 +27,11 @@ const DetailsPage = () => {
     };
     console.log(formData);
     setShowModal(false);
-    alert("Thank you for your contribution!");
+    Swal.fire({
+      title: "Contribution added successfully!",
+      icon: "success",
+      draggable: true,
+    });
   };
 
   return (
@@ -91,7 +96,7 @@ const DetailsPage = () => {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div className="fixed inset-0  bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
             <h2 className="text-xl font-bold mb-4 text-gray-800 text-center">
               Pay Clean-Up Contribution
@@ -103,40 +108,40 @@ const DetailsPage = () => {
                 name="name"
                 placeholder="Contributor Name"
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border rounded text-black"
               />
               <input
                 type="email"
                 name="email"
                 defaultValue={user?.email}
                 readOnly
-                className="w-full p-2 border rounded bg-gray-100"
+                className="w-full p-2 border rounded bg-gray-100 text-black"
               />
               <input
                 type="number"
                 name="amount"
                 placeholder="Amount"
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border rounded text-black"
               />
               <input
                 type="text"
                 name="phone"
                 placeholder="Phone Number"
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border rounded text-black"
               />
               <input
                 type="text"
                 name="address"
                 placeholder="Address"
                 required
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border rounded text-black"
               />
               <textarea
                 name="additionalInfo"
                 placeholder="Additional info (optional)"
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border rounded text-black"
               ></textarea>
 
               <div className="flex justify-end gap-3 pt-2">
