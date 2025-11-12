@@ -10,7 +10,7 @@
 //   if (user && user?.email) {
 //     return children;
 //   }
-//   return <Navigate state={location.pathname} to="/auth/login"></Navigate>;
+//   return <Navigate  to="/auth/login"></Navigate>;
 // };
 
 // export default PrivateRoute;
@@ -22,7 +22,6 @@ const PrivateRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const location = useLocation();
 
-  // 🕒 যদি এখনো loading হয়
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -31,12 +30,10 @@ const PrivateRoute = ({ children }) => {
     );
   }
 
-  // 🔒 যদি user না থাকে, login এ পাঠাও
   if (!user) {
-    return <Navigate to="/auth/login" state={{ from: location }} replace />;
+    return <Navigate to="/auth/login" state={location.pathname} replace />;
   }
 
-  // ✅ user থাকলে children দেখাও
   return children;
 };
 

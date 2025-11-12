@@ -20,7 +20,7 @@ const HomeIssues = () => {
         {data.map((issue) => (
           <div
             key={issue._id}
-            className="max-w-[380px] bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
+            className="w-96 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
           >
             <img
               src={issue.image}

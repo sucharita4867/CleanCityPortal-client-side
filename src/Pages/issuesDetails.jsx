@@ -179,7 +179,7 @@ const DetailsPage = () => {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="btn md:px-8 text-center  rounded-full text-base  md:font-semibold  border-[#F8B864]  text-[#F8B864] hover:bg-white"
+                  className="btn md:px-8 text-center  rounded-full text-base  md:font-semibold  border-[#F8B864] bg-white  text-[#F8B864] hover:bg-white"
                 >
                   Cancel
                 </button>

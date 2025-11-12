@@ -6,23 +6,22 @@ const AllIssues = () => {
 
   return (
     <div className="px-4 md:px-10 my-6">
-      {/* Page Header */}
       <div className="border  mb-10 rounded-xl  bg-white">
         <h1 className="text-[#464646] poppins text-center font-semibold text-3xl mb-3">
           All Issues
         </h1>
-        <p className="text-gray-600 text-center md:w-[70%] mx-auto">
+        <p className="text-gray-600 text-base text-center md:w-[70%] mx-auto">
           The “All Issues” page displays every reported city problem, including
           garbage, road damage, broken public property, and illegal
           constructions — all organized for easy viewing and management.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+      <div className="grid grid-cols-1 w-11/12 mx-auto sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {data.map((issue) => (
           <div
             key={issue._id}
-            className="max-w-[380px] bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
+            className="w-96 bg-white  rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
           >
             <img
               src={issue.image}
