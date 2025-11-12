@@ -111,6 +111,13 @@ const DetailsPage = () => {
                 className="w-full p-2 border rounded text-black"
               />
               <input
+                type="number"
+                name="amount"
+                placeholder="Amount"
+                required
+                className="w-full p-2 border rounded text-black"
+              />
+              <input
                 type="text"
                 name="name"
                 placeholder="Contributor Name"
@@ -124,13 +131,7 @@ const DetailsPage = () => {
                 readOnly
                 className="w-full p-2 border rounded bg-gray-100 text-black"
               />
-              <input
-                type="number"
-                name="amount"
-                placeholder="Amount"
-                required
-                className="w-full p-2 border rounded text-black"
-              />
+
               <input
                 type="text"
                 name="phone"
@@ -147,7 +148,7 @@ const DetailsPage = () => {
               />
               <textarea
                 name="additionalInfo"
-                placeholder="Additional info (optional)"
+                placeholder="Additional info"
                 className="w-full p-2 border rounded text-black"
               ></textarea>
 
