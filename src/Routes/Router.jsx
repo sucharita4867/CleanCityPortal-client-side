@@ -10,6 +10,7 @@ import Register from "../Pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
 import AddIssue from "../Pages/Addissue";
 import PrivateRoute from "../Provider/PrivateRoute";
+import MyIssues from "../Pages/MyIssues";
 
 const router = createBrowserRouter([
   {
@@ -19,18 +20,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
-        loader: () => fetch('http://localhost:3000/latest-issues')
+        loader: () => fetch("http://localhost:3000/latest-issues"),
       },
       {
-        path: "allIssues",
+        path: "/allIssues",
         element: <AllIssues />,
         loader: () => fetch("http://localhost:3000/allIssues"),
-        // HydrateFallback: <Loading />,
-      },
-
-      {
-        path: "/auth/register",
-        element: <Register />,
       },
       {
         path: "/addIssue",
@@ -40,10 +35,18 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/myIssue",
+        element: (
+          <PrivateRoute>
+            <MyIssues/>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
-    path: "/issuesDetails/:id",
+    path: "issuesDetails/:id",
     element: (
       <PrivateRoute>
         <IssuesDetails />
@@ -52,14 +55,17 @@ const router = createBrowserRouter([
     loader: ({ params }) =>
       fetch(`http://localhost:3000/allIssues/${params.id}`),
   },
-
   {
     path: "/auth",
     element: <AuthLayout />,
     children: [
       {
-        path: "/auth/login",
+        path: "login",
         element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
       },
     ],
   },
@@ -68,4 +74,5 @@ const router = createBrowserRouter([
     element: <h2>Error page</h2>,
   },
 ]);
+
 export default router;

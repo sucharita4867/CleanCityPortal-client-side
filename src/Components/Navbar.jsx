@@ -39,21 +39,6 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-
-      <li className="text-base">
-        {user ? (
-          <NavLink
-            to="/addIssue"
-            className={({ isActive }) =>
-              isActive ? "text-[#F8B864] " : "text-black"
-            }
-          >
-            AddIssue
-          </NavLink>
-        ) : (
-          ""
-        )}
-      </li>
       <li className="text-base">
         <NavLink
           to="/allIssues"
@@ -64,6 +49,30 @@ const Navbar = () => {
           AllIssues
         </NavLink>
       </li>
+      {user && (
+        <li className="text-base">
+          <NavLink
+            to="/addIssue"
+            className={({ isActive }) =>
+              isActive ? "text-[#F8B864] " : "text-black"
+            }
+          >
+            AddIssue
+          </NavLink>
+        </li>
+      )}
+      {user && (
+        <li className="text-base">
+          <NavLink
+            to="/myIssue"
+            className={({ isActive }) =>
+              isActive ? "text-[#F8B864] " : "text-black"
+            }
+          >
+            MyIssue
+          </NavLink>
+        </li>
+      )}
     </>
   );
 

@@ -3,7 +3,6 @@ import { Link, useLoaderData } from "react-router";
 
 const HomeIssues = () => {
   const data = useLoaderData();
-  console.log(data);
   return (
     <div className="w-11/12 mx-auto mb-10">
       <div className=" mb-6">

@@ -17,6 +17,7 @@ const DetailsPage = () => {
     e.preventDefault();
     const formData = {
       issueId: issue._id,
+      title: e.target.title.value,
       amount: e.target.amount.value,
       name: e.target.name.value,
       email: e.target.email.value,
@@ -25,13 +26,29 @@ const DetailsPage = () => {
       date: new Date().toISOString(),
       additionalInfo: e.target.additionalInfo.value,
     };
-    console.log(formData);
-    setShowModal(false);
-    Swal.fire({
-      title: "Contribution added successfully!",
-      icon: "success",
-      draggable: true,
-    });
+    fetch("http://localhost:3000/allContribution", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setShowModal(false);
+        Swal.fire({
+          title: "Contribution added successfully!",
+          icon: "success",
+          draggable: true,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.message || "Something went wrong!",
+        });
+      });
   };
 
   return (
@@ -103,6 +120,7 @@ const DetailsPage = () => {
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-3">
+              {/* title */}
               <input
                 type="text"
                 name="title"
@@ -110,6 +128,7 @@ const DetailsPage = () => {
                 required
                 className="w-full p-2 border rounded text-black"
               />
+              {/* amount */}
               <input
                 type="number"
                 name="amount"
@@ -117,6 +136,7 @@ const DetailsPage = () => {
                 required
                 className="w-full p-2 border rounded text-black"
               />
+              {/* contributor name */}
               <input
                 type="text"
                 name="name"
@@ -124,6 +144,7 @@ const DetailsPage = () => {
                 required
                 className="w-full p-2 border rounded text-black"
               />
+              {/* email */}
               <input
                 type="email"
                 name="email"
@@ -131,7 +152,7 @@ const DetailsPage = () => {
                 readOnly
                 className="w-full p-2 border rounded bg-gray-100 text-black"
               />
-
+              {/* phone no */}
               <input
                 type="text"
                 name="phone"
@@ -139,6 +160,7 @@ const DetailsPage = () => {
                 required
                 className="w-full p-2 border rounded text-black"
               />
+              {/* address */}
               <input
                 type="text"
                 name="address"
@@ -146,6 +168,7 @@ const DetailsPage = () => {
                 required
                 className="w-full p-2 border rounded text-black"
               />
+              {/* Additional info */}
               <textarea
                 name="additionalInfo"
                 placeholder="Additional info"
@@ -156,13 +179,13 @@ const DetailsPage = () => {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 border rounded text-gray-600 hover:bg-gray-100"
+                  className="btn md:px-8 text-center  rounded-full text-base  md:font-semibold  border-[#F8B864]  text-[#F8B864] hover:bg-white"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-[#F8B864] text-white rounded hover:bg-[#e69d42]"
+                  className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
                 >
                   Submit
                 </button>

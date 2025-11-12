@@ -14,7 +14,7 @@ const AddIssue = () => {
       description: e.target.description.value,
       image: e.target.image.value,
       amount: e.target.amount.value,
-      date: new Date(),
+      date: new Date().toISOString(),
       email: user.email,
     };
     fetch("http://localhost:3000/allIssues", {
