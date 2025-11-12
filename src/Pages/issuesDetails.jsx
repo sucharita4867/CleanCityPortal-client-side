@@ -2,12 +2,32 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 import { MdCategory } from "react-icons/md";
 import { IoMdMail } from "react-icons/io";
 import { useLoaderData } from "react-router";
+import { useState, useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
 const DetailsPage = () => {
   const issue = useLoaderData();
+  const { user } = useContext(AuthContext);
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+      issueId: issue._id,
+      amount: e.target.amount.value,
+      name: e.target.name.value,
+      email: e.target.email.value,
+      phone: e.target.phone.value,
+      address: e.target.address.value,
+      date: new Date().toISOString(),
+      additionalInfo: e.target.additionalInfo.value,
+    };
+    console.log(formData);
+    setShowModal(false);
+    alert("Thank you for your contribution!");
+  };
 
   return (
     <div>
@@ -57,16 +77,88 @@ const DetailsPage = () => {
               <p className="text-gray-700">{issue.email}</p>
             </div>
 
+            {/* Button */}
             <button
+              onClick={() => setShowModal(true)}
               className="w-full py-3 font-semibold transition
-          btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]
-          "
+              bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-white hover:text-[#F8B864]"
             >
               Pay Clean-Up Contribution
             </button>
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
+            <h2 className="text-xl font-bold mb-4 text-gray-800 text-center">
+              Pay Clean-Up Contribution
+            </h2>
+
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <input
+                type="text"
+                name="name"
+                placeholder="Contributor Name"
+                required
+                className="w-full p-2 border rounded"
+              />
+              <input
+                type="email"
+                name="email"
+                defaultValue={user?.email}
+                readOnly
+                className="w-full p-2 border rounded bg-gray-100"
+              />
+              <input
+                type="number"
+                name="amount"
+                placeholder="Amount"
+                required
+                className="w-full p-2 border rounded"
+              />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                required
+                className="w-full p-2 border rounded"
+              />
+              <input
+                type="text"
+                name="address"
+                placeholder="Address"
+                required
+                className="w-full p-2 border rounded"
+              />
+              <textarea
+                name="additionalInfo"
+                placeholder="Additional info (optional)"
+                className="w-full p-2 border rounded"
+              ></textarea>
+
+              <div className="flex justify-end gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setShowModal(false)}
+                  className="px-4 py-2 border rounded text-gray-600 hover:bg-gray-100"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-[#F8B864] text-white rounded hover:bg-[#e69d42]"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       <footer>
         <Footer />
       </footer>
