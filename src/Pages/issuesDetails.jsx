@@ -105,6 +105,13 @@ const DetailsPage = () => {
             <form onSubmit={handleSubmit} className="space-y-3">
               <input
                 type="text"
+                name="title"
+                placeholder="Issue Title"
+                required
+                className="w-full p-2 border rounded text-black"
+              />
+              <input
+                type="text"
                 name="name"
                 placeholder="Contributor Name"
                 required
