@@ -26,6 +26,7 @@ const MyIssues = () => {
       description: form.description.value,
       status: form.status.value,
     };
+
     fetch(`http://localhost:3000/allIssues/${selectedIssue._id}`, {
       method: "PUT",
       headers: {
@@ -35,11 +36,22 @@ const MyIssues = () => {
     })
       .then((res) => res.json())
       .then(() => {
+        // ✅ success alert
         Swal.fire({
           title: "Your issue details have been updated.",
           icon: "success",
-          draggable: true,
         });
+
+        // ✅ local state update (no reload needed)
+        setIssues((prevIssues) =>
+          prevIssues.map((issue) =>
+            issue._id === selectedIssue._id
+              ? { ...issue, ...updatedData } // replace with updated info
+              : issue
+          )
+        );
+
+        // ✅ close modal or reset
         setSelectedIssue(null);
       })
       .catch((error) => {
@@ -101,56 +113,81 @@ const MyIssues = () => {
         </p>
       </div>
 
-      <div className="grid w-11/12 mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-        {issues.map((issue) => (
-          <div
-            key={issue._id}
-            className="w-96 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
-          >
-            <img
-              src={issue.image}
-              alt={issue.title}
-              className="h-[200px] w-full object-cover"
-            />
-
-            <div className="p-5">
-              <h2 className="text-lg font-semibold text-gray-800 mb-2">
-                {issue.title}
-              </h2>
-
-              <div className="flex justify-between gap-4 text-sm text-gray-500 mb-3">
-                <p>
-                  <span className="font-medium text-gray-700">Category:</span>{" "}
-                  {issue.category}
-                </p>
-                <p>
-                  <span className="font-medium text-gray-700">Location:</span>{" "}
-                  {issue.location}
-                </p>
-              </div>
-
-              <p className="text-gray-700 font-semibold mb-4">
-                Amount:{" "}
-                <span className="text-green-600 font-bold">{issue.amount}</span>
-              </p>
-              <div className="flex justify-end gap-3 pt-2">
-                <button
-                  onClick={() => handleDelete(issue)}
-                  type="button"
-                  className="btn md:px-8 text-center rounded-full text-base md:font-semibold border-[#F8B864] bg-white text-[#F8B864] hover:bg-white"
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={() => setSelectedIssue(issue)}
-                  className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
-                >
-                  Update
-                </button>
-              </div>
-            </div>
+      <div className="w-11/12 mx-auto">
+        {issues.length === 0 ? (
+          <div className="text-center bg-white border border-gray-300 rounded-xl shadow-md p-10 mt-10">
+            <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+              You haven’t reported any issues yet!
+            </h2>
+            <p className="text-gray-500 mb-6">
+              Report your first community cleanliness issue and help make your
+              city better.
+            </p>
+            <Link
+              to="/addIssue"
+              className="inline-block px-6 py-2 rounded-full bg-[#F8B864] text-white font-semibold hover:bg-white hover:text-[#F8B864] hover:border hover:border-[#F8B864] transition duration-300"
+            >
+              Report an Issue
+            </Link>
           </div>
-        ))}
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            {issues.map((issue) => (
+              <div
+                key={issue._id}
+                className="w-96 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
+              >
+                <img
+                  src={issue.image}
+                  alt={issue.title}
+                  className="h-[200px] w-full object-cover"
+                />
+                <div className="p-5">
+                  <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                    {issue.title}
+                  </h2>
+
+                  <div className="flex justify-between gap-4 text-sm text-gray-500 mb-3">
+                    <p>
+                      <span className="font-medium text-gray-700">
+                        Category:
+                      </span>{" "}
+                      {issue.category}
+                    </p>
+                    <p>
+                      <span className="font-medium text-gray-700">
+                        Location:
+                      </span>{" "}
+                      {issue.location}
+                    </p>
+                  </div>
+
+                  <p className="text-gray-700 font-semibold mb-4">
+                    Amount:{" "}
+                    <span className="text-green-600 font-bold">
+                      {issue.amount}
+                    </span>
+                  </p>
+                  <div className="flex justify-end gap-3 pt-2">
+                    <button
+                      onClick={() => handleDelete(issue)}
+                      type="button"
+                      className="btn md:px-8 text-center rounded-full text-base md:font-semibold border-[#F8B864] bg-white text-[#F8B864] hover:bg-white"
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => setSelectedIssue(issue)}
+                      className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
+                    >
+                      Update
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Update Modal */}
