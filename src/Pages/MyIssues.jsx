@@ -9,12 +9,12 @@ const MyIssues = () => {
   const [selectedIssue, setSelectedIssue] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/myIssue?email=${user.email}`)
+    fetch(`http://localhost:3000/myIssue?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setIssues(data);
       });
-  }, [user.email]);
+  }, [user?.email]);
 
   const handleUpdateSubmit = (e) => {
     e.preventDefault();
@@ -52,6 +52,7 @@ const MyIssues = () => {
   };
 
   const handleDelete = (issue) => {
+    console.log(issue);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -70,16 +71,19 @@ const MyIssues = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            });
+            if (data) {
+              const remaining = issues.filter((item) => item._id !== issue._id);
+              setIssues(remaining);
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
           })
-          .catch(err => {
-            console.log(err)
-          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     });
   };
@@ -131,7 +135,7 @@ const MyIssues = () => {
               </p>
               <div className="flex justify-end gap-3 pt-2">
                 <button
-                  onClick={()=>handleDelete(issue)}
+                  onClick={() => handleDelete(issue)}
                   type="button"
                   className="btn md:px-8 text-center rounded-full text-base md:font-semibold border-[#F8B864] bg-white text-[#F8B864] hover:bg-white"
                 >
