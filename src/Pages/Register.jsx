@@ -5,7 +5,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser, setUser, googleLogin } = use(AuthContext);
+  const { createUser, setUser, googleLogin, updateUser } = use(AuthContext);
   const navigate = useNavigate();
 
   const handelRegister = (e) => {
@@ -14,7 +14,7 @@ const Register = () => {
     const email = e.target.email.value;
     const photoURL = e.target.photo.value;
     const password = e.target.password.value;
-    console.log(name, photoURL);
+    console.log(photoURL);
 
     const isValidPassword =
       /[A-Z]/.test(password) && /[a-z]/.test(password) && password.length >= 6;
@@ -28,23 +28,19 @@ const Register = () => {
       return;
     }
 
-    createUser(email, password)
+    createUser(email, password, name, photoURL)
       .then((result) => {
         const user = result.user;
-        setUser(user);
+        // setUser(user);
 
-        // updatedData({ displayName: name, photoURL: photoURL })
-        // .then(() => {
-        // setUser({ ...user, displayName: name, photoURL: photoURL });
-        // })
-        // .catch((error) => {
-        //   Swal.fire({
-        //     icon: "error"
-        //     title: "Oops...",
-        //     text: error,
-        //   });
-        //   setUser(user);
-        // });
+        updateUser({ displayName: name, photoURL: photoURL })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photoURL });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
         // .catch((err) => {
         //   console.log(err);
         // });
