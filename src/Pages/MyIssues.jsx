@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import { Typewriter } from "react-simple-typewriter";
 
 const MyIssues = () => {
   const { user } = use(AuthContext);
@@ -36,22 +37,18 @@ const MyIssues = () => {
     })
       .then((res) => res.json())
       .then(() => {
-        // ✅ success alert
         Swal.fire({
           title: "Your issue details have been updated.",
           icon: "success",
         });
-
-        // ✅ local state update (no reload needed)
         setIssues((prevIssues) =>
           prevIssues.map((issue) =>
             issue._id === selectedIssue._id
-              ? { ...issue, ...updatedData } // replace with updated info
+              ? { ...issue, ...updatedData }
               : issue
           )
         );
 
-        // ✅ close modal or reset
         setSelectedIssue(null);
       })
       .catch((error) => {
@@ -102,9 +99,16 @@ const MyIssues = () => {
 
   return (
     <div>
-      <div className="border mb-10 rounded-xl bg-white">
+      <div className=" mb-10  ">
         <h1 className="text-[#464646] poppins text-center font-semibold text-3xl mb-3">
-          My Issues
+          <Typewriter
+            words={["My Issues"]}
+            loop={1}
+            cursor
+            cursorStyle="_"
+            typeSpeed={70}
+            delaySpeed={1000}
+          />
         </h1>
         <p className="text-gray-600 text-base text-center md:w-[70%] mx-auto">
           This page displays all the cleanliness or public space issues you have
@@ -135,40 +139,61 @@ const MyIssues = () => {
             {issues.map((issue) => (
               <div
                 key={issue._id}
-                className="w-96 bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
+                className="w-96 h-full flex flex-col bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
               >
                 <img
                   src={issue.image}
                   alt={issue.title}
                   className="h-[200px] w-full object-cover"
                 />
-                <div className="p-5">
-                  <h2 className="text-lg font-semibold text-gray-800 mb-2">
+
+                <div className="p-5 flex flex-col flex-1">
+                  <h2 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2 h-12">
                     {issue.title}
                   </h2>
 
-                  <div className="flex justify-between gap-4 text-sm text-gray-500 mb-3">
-                    <p>
+                  <div className="flex justify-between gap-4 text-sm text-gray-500 mb-3 h-10">
+                    <p className="line-clamp-1">
                       <span className="font-medium text-gray-700">
                         Category:
                       </span>{" "}
                       {issue.category}
                     </p>
-                    <p>
+                    <p className="line-clamp-1">
                       <span className="font-medium text-gray-700">
                         Location:
                       </span>{" "}
                       {issue.location}
                     </p>
                   </div>
+                  {/* Amount Status*/}
+                  <div>
+                    {/* Amount */}
+                    <p className="text-gray-700 font-semibold mb-2">
+                      Amount:{" "}
+                      <span className="text-green-600 font-bold">
+                        {issue.amount}
+                      </span>
+                    </p>
 
-                  <p className="text-gray-700 font-semibold mb-4">
-                    Amount:{" "}
-                    <span className="text-green-600 font-bold">
-                      {issue.amount}
-                    </span>
-                  </p>
-                  <div className="flex justify-end gap-3 pt-2">
+                    {/* Status */}
+                    <p className="text-gray-700 font-semibold mb-4">
+                      Status:{" "}
+                      <span
+                        className={
+                          issue.status === "Resolved"
+                            ? "text-green-600 font-bold"
+                            : issue.status === "In Progress"
+                            ? "text-blue-600 font-bold"
+                            : "text-red-600 font-bold"
+                        }
+                      >
+                        {issue.status}
+                      </span>
+                    </p>
+                  </div>
+
+                  <div className="flex justify-end gap-3 mt-auto pt-2">
                     <button
                       onClick={() => handleDelete(issue)}
                       type="button"
@@ -176,9 +201,10 @@ const MyIssues = () => {
                     >
                       Delete
                     </button>
+
                     <button
                       onClick={() => setSelectedIssue(issue)}
-                      className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
+                      className="btn md:px-8 border border-none text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-white hover:text-[#F8B864]"
                     >
                       Update
                     </button>
@@ -275,11 +301,12 @@ const MyIssues = () => {
                 </label>
                 <select
                   name="status"
-                  defaultValue={selectedIssue.status || "ongoing"}
+                  defaultValue={selectedIssue.status}
                   className="w-full p-2 border rounded-md"
                 >
-                  <option value="ongoing">Ongoing</option>
-                  <option value="ended">Ended</option>
+                  <option value="Pending">Pending</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Resolved">Resolved</option>
                 </select>
               </div>
 

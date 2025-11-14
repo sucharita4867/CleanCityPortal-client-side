@@ -22,6 +22,7 @@ const DetailsPage = () => {
       name: e.target.name.value,
       email: e.target.email.value,
       phone: e.target.phone.value,
+      category: e.target.category.value,
       address: e.target.address.value,
       date: new Date().toISOString(),
       additionalInfo: e.target.additionalInfo.value,
@@ -115,28 +116,64 @@ const DetailsPage = () => {
       {showModal && (
         <div className="fixed inset-0  bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
-            <h2 className="text-xl font-bold mb-4 text-gray-800 text-center">
+            <h2 className="text-xl font-bold mb-2 text-gray-800 text-center">
               Pay Clean-Up Contribution
             </h2>
 
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-1">
               {/* title */}
+              <label className="block text-gray-700 text-sm font-medium mb-1">
+                Title
+              </label>
               <input
                 type="text"
                 name="title"
+                defaultValue={issue.title}
                 placeholder="Issue Title"
                 required
                 className="w-full p-2 border rounded text-black"
               />
-              {/* amount */}
-              <input
-                type="number"
-                name="amount"
-                placeholder="Amount"
-                required
-                className="w-full p-2 border rounded text-black"
-              />
-              {/* contributor name */}
+              <div className="flex gap-4 items-center justify-between">
+                {/* category */}
+                <div>
+                  <label className="block text-gray-700 font-medium mb-1 text-base">
+                    Category
+                  </label>
+                  <select
+                    name="category"
+                    required
+                    className="w-full p-2 border rounded text-black"
+                  >
+                    <option value="">Select a category</option>
+                    <option value="Garbage">Garbage</option>
+                    <option value="Waterlogging">Waterlogging</option>
+                    <option value="Illegal Construction">
+                      Illegal Construction
+                    </option>
+                    <option value="Broken Public Property">
+                      Broken Public Property
+                    </option>
+                    <option value="Road Damage">Road Damage</option>
+                  </select>
+                </div>
+                {/* amount */}
+                <div>
+                  <label className="block text-gray-700 text-sm font-medium mb-1">
+                    Amount
+                  </label>
+                  <input
+                    type="number"
+                    name="amount"
+                    placeholder="Amount"
+                    required
+                    className="w-full p-2 border rounded text-black"
+                  />
+                </div>
+              </div>
+              {/*  */}
+              <label className="block text-gray-700 text-sm font-medium mb-1">
+                Contributor name
+              </label>
               <input
                 type="text"
                 name="name"
@@ -144,7 +181,9 @@ const DetailsPage = () => {
                 required
                 className="w-full p-2 border rounded text-black"
               />
-              {/* email */}
+              <label className="block text-gray-700 text-sm font-medium mb-1">
+                Email
+              </label>
               <input
                 type="email"
                 name="email"
@@ -152,23 +191,38 @@ const DetailsPage = () => {
                 readOnly
                 className="w-full p-2 border rounded bg-gray-100 text-black"
               />
-              {/* phone no */}
-              <input
-                type="text"
-                name="phone"
-                placeholder="Phone Number"
-                required
-                className="w-full p-2 border rounded text-black"
-              />
-              {/* address */}
-              <input
-                type="text"
-                name="address"
-                placeholder="Address"
-                required
-                className="w-full p-2 border rounded text-black"
-              />
-              {/* Additional info */}
+              <div className="flex items-center gap-4 justify-between">
+                {/* phone no */}
+                <div>
+                  <label className="block text-gray-700 text-sm font-medium mb-1">
+                    Phone no
+                  </label>
+                  <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone Number"
+                    required
+                    className="w-full p-2 border rounded text-black"
+                  />
+                </div>
+                {/* address */}
+                <div>
+                  <label className="block text-gray-700 text-sm font-medium mb-1">
+                    Address
+                  </label>
+                  <input
+                    type="text"
+                    name="address"
+                    placeholder="Address"
+                    required
+                    className="w-full p-2 border rounded text-black"
+                  />
+                </div>
+              </div>
+              {/*  */}
+              <label className="block text-gray-700 text-sm font-medium mb-1">
+                Additional info
+              </label>
               <textarea
                 name="additionalInfo"
                 placeholder="Additional info"

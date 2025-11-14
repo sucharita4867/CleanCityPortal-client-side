@@ -45,7 +45,7 @@ const Login = () => {
   };
   return (
     <div className="text-black flex justify-center items-center my-8">
-      <div className="card bg-base-100 pt-4 w-full max-w-sm shrink-0 shadow-2xl border border-black">
+      <div className="card bg-base-100 pt-4 w-full max-w-sm shrink-0 shadow-2xl border border-gray-300">
         <h1 className="text-[#464646] poppins text-center font-semibold text-2xl ">
           Please Login!
         </h1>

@@ -2,9 +2,9 @@ import React, { useRef } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import banner1 from "../assets/clening1.webp";
-import banner2 from "../assets/clening2.webp";
-import banner3 from "../assets/clening3.webp";
+import banner2 from "../assets/image2.jpg";
+import banner1 from "../assets/clening2.webp";
+import banner3 from "../assets/image.webp";
 
 // Import Swiper styles
 import "swiper/css";

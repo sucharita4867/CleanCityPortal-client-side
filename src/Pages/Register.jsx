@@ -1,18 +1,20 @@
 import React, { use } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, setUser, googleLogin } = use(AuthContext);
+  const navigate = useNavigate();
+
   const handelRegister = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
+    // const name = e.target.name.value;
     const email = e.target.email.value;
-    const photo = e.target.photo.value;
+    // const photo = e.target.photo.value;
     const password = e.target.password.value;
-    console.log({ name, email, photo, password });
+
     const isValidPassword =
       /[A-Z]/.test(password) && /[a-z]/.test(password) && password.length >= 6;
 
@@ -24,23 +26,26 @@ const Register = () => {
       });
       return;
     }
+
     createUser(email, password)
       .then((result) => {
         const user = result.user;
         setUser(user);
+
         Swal.fire({
           title: "Register successfully!",
           icon: "success",
           draggable: true,
         });
+
+        // 🔥 SUCCESS হলে home page এ redirect
+        navigate("/");
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: { errorCode, errorMessage },
+          text: error.message,
         });
       });
   };
@@ -57,7 +62,7 @@ const Register = () => {
 
   return (
     <div className="text-black flex justify-center items-center my-4">
-      <div className="card bg-base-100 pt-4 w-full max-w-sm shrink-0 shadow-2xl border border-black">
+      <div className="card bg-base-100 pt-4 w-full max-w-sm shrink-0 shadow-2xl border border-gray-300">
         <h1 className="text-[#464646] poppins text-center font-semibold text-2xl ">
           Please Register!
         </h1>

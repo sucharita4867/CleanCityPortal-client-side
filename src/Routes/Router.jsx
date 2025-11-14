@@ -8,9 +8,12 @@ import IssuesDetails from "../Pages/IssuesDetails";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
-import AddIssue from "../Pages/Addissue";
+// import AddIssue from "../Pages/Addissue";
 import PrivateRoute from "../Provider/PrivateRoute";
 import MyIssues from "../Pages/MyIssues";
+import MyContribution from "../Pages/MyContribution";
+import ErrorPage from "../Pages/ErrorPage";
+import AddIssue from "../Pages/AddIssue";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +46,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/myContribution",
+        element: (
+          <PrivateRoute>
+            <MyContribution />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
@@ -71,7 +82,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/*",
-    element: <h2>Error page</h2>,
+    element: <ErrorPage />,
   },
 ]);
 
