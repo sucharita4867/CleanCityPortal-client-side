@@ -38,6 +38,7 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         console.log("successfull", result);
+        navigate(`${location.state ? location.state : "/"}`);
       })
       .catch((err) => {
         console.log(err);

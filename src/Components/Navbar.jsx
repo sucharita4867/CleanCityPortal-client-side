@@ -6,7 +6,7 @@ import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-
+  console.log(user);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   const handleToggle = () => {

@@ -167,7 +167,7 @@ const MyIssues = () => {
                     </p>
                   </div>
                   {/* Amount Status*/}
-                  <div>
+                  <div className="flex gap-8 items-center justify-between w-[95%] mx-auto">
                     {/* Amount */}
                     <p className="text-gray-700 font-semibold mb-2">
                       Amount:{" "}

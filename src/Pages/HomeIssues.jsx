@@ -29,38 +29,36 @@ const HomeIssues = () => {
 
       {/* cards */}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+      <div className="grid grid-cols-1 w-11/12 mx-auto sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {data.map((issue) => (
-          <Fade
-            direction="up"
-            triggerOnce
+          <div
             key={issue._id}
-            cascade
-            damping={0.1}
+            className="w-96 bg-white h-full flex flex-col rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
           >
-            <div className="w-96 h-full flex flex-col bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]">
-              <img
-                src={issue.image}
-                alt={issue.title}
-                className="h-[200px] w-full object-cover"
-              />
+            <img
+              src={issue.image}
+              alt={issue.title}
+              className="h-[200px] w-full object-cover"
+            />
 
-              <div className="p-5 flex flex-col flex-1">
-                <h2 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2 h-12">
-                  {issue.title}
-                </h2>
+            <div className="p-5 flex flex-col flex-1">
+              <h2 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2 h-12">
+                {issue.title}
+              </h2>
 
-                <div className="flex justify-between gap-4 text-sm text-gray-500 mb-3 h-10">
-                  <p className="line-clamp-1">
-                    <span className="font-medium text-gray-700">Category:</span>{" "}
-                    {issue.category}
-                  </p>
-                  <p className="line-clamp-1">
-                    <span className="font-medium text-gray-700">Location:</span>{" "}
-                    {issue.location}
-                  </p>
-                </div>
-
+              <div className="flex justify-between gap-4 text-sm text-gray-500 mb-3 h-10">
+                <p className="line-clamp-1">
+                  <span className="font-medium text-gray-700">Category:</span>{" "}
+                  {issue.category}
+                </p>
+                <p className="line-clamp-1">
+                  <span className="font-medium text-gray-700">Location:</span>{" "}
+                  {issue.location}
+                </p>
+                {/*  Status anount*/}
+              </div>
+              <div className="flex gap-8 items-center justify-between w-[95%] mx-auto">
+                {/* anount */}
                 <p className="text-gray-700 font-semibold mb-4">
                   Amount:{" "}
                   <span className="text-green-600 font-bold">
@@ -68,14 +66,30 @@ const HomeIssues = () => {
                   </span>
                 </p>
 
-                <Link to={`/issuesDetails/${issue._id}`} className="mt-auto">
-                  <button className="btn border border-none md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-white w-full hover:text-[#F8B864]">
-                    See Details
-                  </button>
-                </Link>
+                {/* Status */}
+                <p className="text-gray-700 font-semibold mb-4">
+                  Status:{" "}
+                  <span
+                    className={
+                      issue.status === "Resolved"
+                        ? "text-green-600 font-bold"
+                        : issue.status === "In Progress"
+                        ? "text-blue-600 font-bold"
+                        : "text-red-600 font-bold"
+                    }
+                  >
+                    {issue.status}
+                  </span>
+                </p>
               </div>
+
+              <Link to={`/issuesDetails/${issue._id}`} className="mt-auto">
+                <button className="btn border-none md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-white w-full hover:text-[#F8B864]">
+                  See Details
+                </button>
+              </Link>
             </div>
-          </Fade>
+          </div>
         ))}
       </div>
     </div>

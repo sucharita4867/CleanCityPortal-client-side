@@ -8,23 +8,28 @@ const CommunityStats = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`http://localhost:3000/community-stats`)
-      .then((res) => {
+    const fetchStats = async () => {
+      try {
+        setLoading(true);
+
+        const res = await fetch("http://localhost:3000/community-stats");
+
         if (!res.ok) {
           throw new Error("Failed to fetch stats");
         }
-        return res.json();
-      })
-      .then((data) => {
+
+        const data = await res.json();
         setStatsData(data);
-        setLoading(false);
-      })
-      .catch((err) => {
+      } catch (err) {
         setError(err.message);
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+
+    fetchStats();
   }, []);
+
   const statsStructure = [
     {
       id: 1,
@@ -48,7 +53,8 @@ const CommunityStats = () => {
 
   return (
     <div>
-      <div className=" mb-6">
+      {/* Title */}
+      <div className="mb-6">
         <h1 className="text-[#464646] poppins text-center font-semibold text-3xl">
           <Typewriter
             words={["Community Stats"]}
@@ -62,13 +68,23 @@ const CommunityStats = () => {
         <p className="text-[#989EA9] md:w-[60%] text-base mx-auto text-center mt-2">
           See our community's growing impact. Track live updates on total
           registered users, issues resolved, and currently pending tasks.
-          Together, we are making a tangible difference.
         </p>
       </div>
+
+      {/* Stats Section */}
       <section className="bg-gray-100 py-12">
         <div className="w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center text-white">
-          {loading && <p className="text-black col-span-3">Loading stats...</p>}
-          {error && <p className="text-red-600 col-span-3">Error: {error}</p>}
+          {loading && (
+            <p className="text-black col-span-3 text-lg font-semibold">
+              Loading stats...
+            </p>
+          )}
+
+          {error && (
+            <p className="text-red-600 col-span-3 font-semibold">
+              Error: {error}
+            </p>
+          )}
 
           {!loading &&
             !error &&
@@ -76,16 +92,16 @@ const CommunityStats = () => {
             statsStructure.map((stat) => (
               <div
                 key={stat.id}
-                className="flex flex-col items-center justify-center p-6 bg-[#F8B864] rounded-lg shadow-lg hover:scale-105 transform transition duration-300"
+                className="flex flex-col items-center justify-center p-6 bg-[#F8B864] rounded-lg shadow-lg hover:scale-105 transition duration-300"
               >
                 <div className="bg-white rounded-full p-4 mb-4 text-orange-400">
                   {stat.icon}
                 </div>
+
                 <h2 className="text-2xl font-bold">
-                  {statsData[stat.apiKey] !== undefined
-                    ? statsData[stat.apiKey]
-                    : 0}
+                  {statsData[stat.apiKey] ?? 0}
                 </h2>
+
                 <p className="text-sm mt-2">{stat.label}</p>
               </div>
             ))}

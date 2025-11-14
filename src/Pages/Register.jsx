@@ -5,14 +5,14 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser, setUser, googleLogin } = use(AuthContext);
+  const { createUser, setUser, googleLogin, updatedData } = use(AuthContext);
   const navigate = useNavigate();
 
   const handelRegister = (e) => {
     e.preventDefault();
-    // const name = e.target.name.value;
+    const name = e.target.name.value;
     const email = e.target.email.value;
-    // const photo = e.target.photo.value;
+    const photoURL = e.target.photo.value;
     const password = e.target.password.value;
 
     const isValidPassword =
@@ -30,15 +30,27 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        setUser(user);
+        updatedData({ displayName: name, photoURL: photoURL })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photoURL });
+          })
+          // .catch((error) => {
+          //   Swal.fire({
+          //     icon: "error",
+          //     title: "Oops...",
+          //     text: error,
+          //   });
+          //   setUser(user);
+          // });
+          .catch((err) => {
+            console.log(err);
+          });
 
         Swal.fire({
           title: "Register successfully!",
           icon: "success",
           draggable: true,
         });
-
-        // 🔥 SUCCESS হলে home page এ redirect
         navigate("/");
       })
       .catch((error) => {
