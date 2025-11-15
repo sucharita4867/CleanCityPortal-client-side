@@ -34,7 +34,7 @@ const Login = () => {
   };
 
   const handleGoogle = () => {
-    console.log("google btn clicked");
+    // console.log("google btn clicked");
     googleLogin()
       .then((result) => {
         console.log("successfull", result);

@@ -15,7 +15,9 @@ const MyContribution = () => {
 
     setLoading(true);
 
-    fetch(`http://localhost:3000/myContribution?email=${user.email}`)
+    fetch(
+      `https://clean-city-portal-server.vercel.app/myContribution?email=${user.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setContributions(data);

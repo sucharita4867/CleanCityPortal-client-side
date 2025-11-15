@@ -1,111 +1,84 @@
 import React, { useState, useEffect } from "react";
-import { FaUsers, FaCheckSquare, FaHourglassHalf } from "react-icons/fa";
+import { FaUsers, FaCheckCircle, FaClock } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
 
 const CommunityStats = () => {
   const [statsData, setStatsData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        setLoading(true);
-
-        const res = await fetch("http://localhost:3000/community-stats");
-
-        if (!res.ok) {
-          throw new Error("Failed to fetch stats");
-        }
-
-        const data = await res.json();
+    fetch("https://clean-city-portal-server.vercel.app/community-stats")
+      .then((res) => res.json())
+      .then((data) => {
         setStatsData(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
         setLoading(false);
-      }
-    };
-
-    fetchStats();
+      })
+      .catch(() => setLoading(false));
   }, []);
 
-  const statsStructure = [
+  const stats = [
     {
       id: 1,
-      icon: <FaUsers size={30} />,
-      label: "Total Registered Users",
-      apiKey: "totalUsers",
+      icon: <FaUsers size={32} />,
+      label: "Total Users",
+      value: statsData?.totalUsers ?? 0,
+      color: "bg-orange-400",
     },
     {
       id: 2,
-      icon: <FaCheckSquare size={30} />,
-      label: "Issues Resolved",
-      apiKey: "issuesResolved",
+      icon: <FaCheckCircle size={32} />,
+      label: "Resolved Issues",
+      value: statsData?.issuesResolved ?? 0,
+      color: "bg-green-500",
     },
     {
       id: 3,
-      icon: <FaHourglassHalf size={30} />,
-      label: "Issues Pending",
-      apiKey: "issuesPending",
+      icon: <FaClock size={32} />,
+      label: "Pending Issues",
+      value: statsData?.issuesPending ?? 0,
+      color: "bg-yellow-500",
     },
   ];
 
   return (
-    <div>
+    <div className="my-16">
       {/* Title */}
-      <div className="mb-6">
-        <h1 className="text-[#464646] poppins text-center font-semibold text-3xl">
-          <Typewriter
-            words={["Community Stats"]}
-            loop={1}
-            cursor
-            cursorStyle="_"
-            typeSpeed={70}
-            delaySpeed={1000}
-          />
-        </h1>
-        <p className="text-[#989EA9] md:w-[60%] text-base mx-auto text-center mt-2">
-          See our community's growing impact. Track live updates on total
-          registered users, issues resolved, and currently pending tasks.
-        </p>
-      </div>
+      <h1 className="text-[#464646] poppins text-center font-semibold text-3xl">
+        <Typewriter
+          words={["Community Stats"]}
+          loop={1}
+          cursor
+          cursorStyle="_"
+          typeSpeed={70}
+          delaySpeed={1000}
+        />
+      </h1>
 
-      {/* Stats Section */}
-      <section className="bg-gray-100 py-12">
-        <div className="w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center text-white">
-          {loading && (
-            <p className="text-black col-span-3 text-lg font-semibold">
-              Loading stats...
-            </p>
-          )}
+      <p className="text-[#7A7A7A] md:w-[55%] text-base mx-auto text-center mt-2">
+        Stay informed with real-time updates. Check the number of active users,
+        resolved issues, and pending tasks contributed by the community.
+      </p>
 
-          {error && (
-            <p className="text-red-600 col-span-3 font-semibold">
-              Error: {error}
-            </p>
-          )}
-
-          {!loading &&
-            !error &&
-            statsData &&
-            statsStructure.map((stat) => (
-              <div
-                key={stat.id}
-                className="flex flex-col items-center justify-center p-6 bg-[#F8B864] rounded-lg shadow-lg hover:scale-105 transition duration-300"
-              >
-                <div className="bg-white rounded-full p-4 mb-4 text-orange-400">
-                  {stat.icon}
-                </div>
-
-                <h2 className="text-2xl font-bold">
-                  {statsData[stat.apiKey] ?? 0}
-                </h2>
-
-                <p className="text-sm mt-2">{stat.label}</p>
+      {/* Stats Cards */}
+      <section className="py-6 bg-gray-100 mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8  mx-auto">
+        {loading ? (
+          <p className="col-span-3 text-center text-lg">Loading stats...</p>
+        ) : (
+          stats.map((stat) => (
+            <div
+              key={stat.id}
+              className="flex flex-col  items-center justify-center py-6 bg-[#F8B864]  rounded-2xl shadow-lg  hover:scale-105 transition duration-300 "
+            >
+              <div className={`p-4 rounded-full mb-4 text-white ${stat.color}`}>
+                {stat.icon}
               </div>
-            ))}
-        </div>
+
+              <h2 className="text-3xl font-bold text-white">{stat.value}</h2>
+
+              <p className="text-sm text-white mt-1">{stat.label}</p>
+            </div>
+          ))
+        )}
       </section>
     </div>
   );

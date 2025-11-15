@@ -14,7 +14,7 @@ const Register = () => {
     const email = e.target.email.value;
     const photoURL = e.target.photo.value;
     const password = e.target.password.value;
-    console.log(photoURL);
+    // console.log(photoURL);
 
     const isValidPassword =
       /[A-Z]/.test(password) && /[a-z]/.test(password) && password.length >= 6;
@@ -31,19 +31,18 @@ const Register = () => {
     createUser(email, password, name, photoURL)
       .then((result) => {
         const user = result.user;
-        // setUser(user);
 
         updateUser({ displayName: name, photoURL: photoURL })
           .then(() => {
             setUser({ ...user, displayName: name, photoURL: photoURL });
           })
           .catch((error) => {
-            console.log(error);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: error,
+            });
           });
-
-        // .catch((err) => {
-        //   console.log(err);
-        // });
 
         Swal.fire({
           title: "Register successfully!",

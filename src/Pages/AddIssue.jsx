@@ -19,7 +19,7 @@ const AddIssue = () => {
       date: new Date().toISOString(),
       email: user.email,
     };
-    fetch("http://localhost:3000/allIssues", {
+    fetch("https://clean-city-portal-server.vercel.app/allIssues", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

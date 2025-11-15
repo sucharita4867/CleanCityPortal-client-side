@@ -10,7 +10,9 @@ const MyIssues = () => {
   const [selectedIssue, setSelectedIssue] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/myIssue?email=${user?.email}`)
+    fetch(
+      `https://clean-city-portal-server.vercel.app/myIssue?email=${user?.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setIssues(data);
@@ -28,13 +30,16 @@ const MyIssues = () => {
       status: form.status.value,
     };
 
-    fetch(`http://localhost:3000/allIssues/${selectedIssue._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedData),
-    })
+    fetch(
+      `https://clean-city-portal-server.vercel.app/allIssues/${selectedIssue._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedData),
+      }
+    )
       .then((res) => res.json())
       .then(() => {
         Swal.fire({
@@ -61,7 +66,7 @@ const MyIssues = () => {
   };
 
   const handleDelete = (issue) => {
-    console.log(issue);
+    // console.log(issue);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -72,12 +77,15 @@ const MyIssues = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/allIssues/${issue._id}`, {
-          method: "DELETE",
-          headers: {
-            "content-type": "application/json",
-          },
-        })
+        fetch(
+          `https://clean-city-portal-server.vercel.app/allIssues/${issue._id}`,
+          {
+            method: "DELETE",
+            headers: {
+              "content-type": "application/json",
+            },
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data) {

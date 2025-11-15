@@ -27,7 +27,7 @@ const DetailsPage = () => {
       date: new Date().toISOString(),
       additionalInfo: e.target.additionalInfo.value,
     };
-    fetch("http://localhost:3000/allContribution", {
+    fetch("https://clean-city-portal-server.vercel.app/allContribution", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

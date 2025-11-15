@@ -32,7 +32,6 @@ const JoinCleanDrive = () => {
           </Link>
         </div>
 
-        {/* ছবির সেকশনটি বাদ দেওয়া হয়েছে */}
       </div>
     </section>
   );

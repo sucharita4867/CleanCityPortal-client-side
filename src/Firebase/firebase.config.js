@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAzK7suzZX5xx7ZFnXbVU0higX17VAyFv8",
-  authDomain: "cleancityportal.firebaseapp.com",
-  projectId: "cleancityportal",
-  storageBucket: "cleancityportal.firebasestorage.app",
-  messagingSenderId: "160990729287",
-  appId: "1:160990729287:web:3cbf95f27adddd91da4d62",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

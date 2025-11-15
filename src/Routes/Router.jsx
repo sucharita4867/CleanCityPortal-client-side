@@ -23,12 +23,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
-        loader: () => fetch("http://localhost:3000/latest-issues"),
+        loader: () =>
+          fetch("https://clean-city-portal-server.vercel.app/latest-issues"),
       },
       {
         path: "/allIssues",
         element: <AllIssues />,
-        loader: () => fetch("http://localhost:3000/allIssues"),
+        loader: () =>
+          fetch("https://clean-city-portal-server.vercel.app/allIssues"),
       },
       {
         path: "/addIssue",
@@ -64,7 +66,9 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     loader: ({ params }) =>
-      fetch(`http://localhost:3000/allIssues/${params.id}`),
+      fetch(
+        `https://clean-city-portal-server.vercel.app/allIssues/${params.id}`
+      ),
   },
   {
     path: "/auth",
