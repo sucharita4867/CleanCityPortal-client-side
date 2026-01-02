@@ -4,10 +4,10 @@ import { Typewriter } from "react-simple-typewriter";
 
 const JoinCleanDrive = () => {
   return (
-    <section className=" py-8 px-6">
+    <section className=" py-8 px-6 border border-black my-10">
       <div className="max-w-2xl mx-auto text-center">
         <div>
-          <h2 className="text-3xl font-bold text-[#464646] poppins mb-4">
+          <h2 className="title poppins">
             <Typewriter
               words={["Join Our Clean Drive Initiative!"]}
               loop={1}
@@ -17,7 +17,7 @@ const JoinCleanDrive = () => {
               delaySpeed={1000}
             />
           </h2>
-          <p className="text-[#6A6A6A] text-base mb-8">
+          <p className="description mb-8">
             Your time and effort can make our environment cleaner and more
             beautiful. Let's build a cleaner future together. Register now and
             be part of the change.
@@ -31,7 +31,6 @@ const JoinCleanDrive = () => {
             <FaArrowRight className="ml-2" />
           </Link>
         </div>
-
       </div>
     </section>
   );

@@ -4,6 +4,7 @@ import { FaDownload } from "react-icons/fa";
 import autoTable from "jspdf-autotable";
 import jsPDF from "jspdf";
 import { Typewriter } from "react-simple-typewriter";
+import Loading from "../Components/Loading";
 
 const MyContribution = () => {
   const { user } = useContext(AuthContext);
@@ -68,7 +69,7 @@ const MyContribution = () => {
       return (
         <tr>
           <td colSpan="5" className="text-center">
-            <span className="loading loading-spinner text-warning"></span>
+            <Loading></Loading>
           </td>
         </tr>
       );
@@ -99,9 +100,9 @@ const MyContribution = () => {
 
   return (
     <div>
-      <div className="mb-10 p-6 shadow-sm">
+      <div className="my-6 pb-6 ">
         <div className="flex flex-col md:flex-row justify-center items-center mb-3">
-          <h1 className="text-[#464646] poppins text-center font-semibold text-3xl">
+          <h1 className="title poppins ">
             <Typewriter
               words={["My Contribution"]}
               loop={1}
@@ -113,7 +114,7 @@ const MyContribution = () => {
           </h1>
         </div>
 
-        <p className="text-gray-600 text-base text-center md:w-[60%] mx-auto">
+        <p className="description md:w-[60%]">
           Track all your contributions in one place. This page shows a clear
           table of your payments, including issue category, amount, and date.
           You can also download a complete PDF report.
@@ -123,7 +124,7 @@ const MyContribution = () => {
           <button
             onClick={handleDownloadPDF}
             disabled={contributions.length === 0}
-            className="btn md:px-8 text-center border border-none bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
+            className="btn "
           >
             <FaDownload className="mr-2" />
             Download Report
@@ -131,7 +132,7 @@ const MyContribution = () => {
         </div>
       </div>
 
-      <div className="text-black bg-white rounded-xl w-11/12 mx-auto shadow-sm">
+      <div className="text-black bg-white border border-gray-200 rounded-xl w-11/12 mx-auto shadow-sm">
         <div className="overflow-x-auto">
           <table className="table">
             <thead className="bg-base-200">

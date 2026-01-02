@@ -18,4 +18,17 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+.btn {
+  @apply px-8 text-center bg-[#F8B864] rounded-full text-base text-white font-semibold border border-transparent hover:border-[#F8B864] hover:bg-white hover:text-[#F8B864] transition duration-300;
+}
+
+.title {
+  @apply text-[#464646] text-center font-semibold text-2xl
+}
+
+.description {
+  @apply text-[#464646] text-base mx-auto text-center
+}
+
+
 /* hover:scale-105 transform transition duration-300 cursor-pointer */

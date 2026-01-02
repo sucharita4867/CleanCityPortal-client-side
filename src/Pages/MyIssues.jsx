@@ -108,7 +108,7 @@ const MyIssues = () => {
   return (
     <div>
       <div className=" mb-10  ">
-        <h1 className="text-[#464646] poppins text-center font-semibold text-3xl mb-3">
+        <h1 className="title poppins  mb-3">
           <Typewriter
             words={["My Issues"]}
             loop={1}
@@ -118,7 +118,7 @@ const MyIssues = () => {
             delaySpeed={1000}
           />
         </h1>
-        <p className="text-gray-600 text-base text-center md:w-[70%] mx-auto">
+        <p className="description  md:w-[70%] ">
           This page displays all the cleanliness or public space issues you have
           reported. You can easily check each issue’s details, track its current
           status, and manage your contributions or updates.
@@ -135,19 +135,16 @@ const MyIssues = () => {
               Report your first community cleanliness issue and help make your
               city better.
             </p>
-            <Link
-              to="/addIssue"
-              className="inline-block px-6 py-2 rounded-full bg-[#F8B864] text-white font-semibold hover:bg-white hover:text-[#F8B864] hover:border hover:border-[#F8B864] transition duration-300"
-            >
+            <Link to="/addIssue" className="btn">
               Report an Issue
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 justify-items-center">
             {issues.map((issue) => (
               <div
                 key={issue._id}
-                className="w-96 h-full flex flex-col bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
+                className="w-full h-full flex flex-col bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
               >
                 <img
                   src={issue.image}
@@ -201,18 +198,18 @@ const MyIssues = () => {
                     </p>
                   </div>
 
-                  <div className="flex justify-end gap-3 mt-auto pt-2">
+                  <div className="flex justify-between items-center gap-3 mt-auto pt-2">
                     <button
                       onClick={() => handleDelete(issue)}
                       type="button"
-                      className="btn md:px-8 text-center rounded-full text-base md:font-semibold border-[#F8B864] bg-white text-[#F8B864] hover:bg-white"
+                      className="btn"
                     >
                       Delete
                     </button>
 
                     <button
                       onClick={() => setSelectedIssue(issue)}
-                      className="btn md:px-8 border border-none text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-white hover:text-[#F8B864]"
+                      className="btn "
                     >
                       Update
                     </button>

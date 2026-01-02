@@ -44,9 +44,9 @@ const AddIssue = () => {
   };
 
   return (
-    <div className="min-h-screen  from-[#fdfaf5] to-[#f6e8d7] flex justify-center items-center py-10">
+    <div className="min-h-screen  from-[#fdfaf5] to-[#f6e8d7] flex justify-center items-center my-4">
       <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-2xl border border-gray-200">
-        <h2 className="text-[#464646] poppins text-center font-semibold text-3xl mb-3">
+        <h2 className="title poppins  mb-3">
           <Typewriter
             words={["Report a New Issue"]}
             loop={1}
@@ -186,10 +186,7 @@ const AddIssue = () => {
             />
           </div>
           <div className="pt-4">
-            <button
-              type="submit"
-              className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864] w-full border border-none"
-            >
+            <button type="submit" className="btn w-full">
               Submit Issue
             </button>
           </div>

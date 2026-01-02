@@ -3,7 +3,6 @@ import HomeLayout from "../Layouts/HomeLayout";
 import AllIssues from "../Pages/AllIssues";
 import HomePage from "../Pages/HomePage";
 // import HomeIssues from "../Pages/Homeissues";
-import Loading from "../Components/Loading";
 import IssuesDetails from "../Pages/IssuesDetails";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
@@ -12,8 +11,8 @@ import AuthLayout from "../Layouts/AuthLayout";
 import PrivateRoute from "../Provider/PrivateRoute";
 import MyIssues from "../Pages/MyIssues";
 import MyContribution from "../Pages/MyContribution";
-import ErrorPage from "../Pages/ErrorPage"
-import AddIssue from "../Pages/AddIssue"
+import ErrorPage from "../Pages/ErrorPage";
+import AddIssue from "../Pages/AddIssue";
 
 const router = createBrowserRouter([
   {

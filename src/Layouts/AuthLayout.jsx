@@ -6,11 +6,11 @@ import { Outlet } from "react-router";
 
 const AuthLayout = () => {
   return (
-    <div>
+    <div className="bg-[#F7F7F7]">
       <header>
         <Navbar />
       </header>
-      <main>
+      <main className="pt-20">
         <Outlet />
       </main>
       <footer>

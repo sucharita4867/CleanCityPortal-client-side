@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaUsers, FaCheckCircle, FaClock } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
+import Loading from "../Components/Loading";
 
 const CommunityStats = () => {
   const [statsData, setStatsData] = useState(null);
@@ -41,9 +42,9 @@ const CommunityStats = () => {
   ];
 
   return (
-    <div className="my-16">
+    <div className=" border border-black">
       {/* Title */}
-      <h1 className="text-[#464646] poppins text-center font-semibold text-3xl">
+      <h1 className="title poppins">
         <Typewriter
           words={["Community Stats"]}
           loop={1}
@@ -54,15 +55,15 @@ const CommunityStats = () => {
         />
       </h1>
 
-      <p className="text-[#7A7A7A] md:w-[55%] text-base mx-auto text-center mt-2">
+      <p className="description md:w-[55%]  mt-2">
         Stay informed with real-time updates. Check the number of active users,
         resolved issues, and pending tasks contributed by the community.
       </p>
 
       {/* Stats Cards */}
-      <section className="py-6 w-11/12 mx-auto bg-gray-100 mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8  mx-auto">
+      <section className="py-6 w-11/12 mx-auto   grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8  mx-auto">
         {loading ? (
-          <p className="col-span-3 text-center text-lg">Loading stats...</p>
+          <Loading></Loading>
         ) : (
           stats.map((stat) => (
             <div

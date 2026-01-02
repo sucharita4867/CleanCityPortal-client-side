@@ -15,10 +15,9 @@ const AllIssues = () => {
   });
 
   return (
-    <div className="px-4 md:px-10 my-6">
-  
+    <div className="px-4 md:px-10 my-4">
       <div className="mb-10 rounded-xl">
-        <h1 className="text-[#464646] poppins text-center font-semibold text-3xl mb-3">
+        <h1 className="title poppins mb-3">
           <Typewriter
             words={["All Issues"]}
             loop={1}
@@ -28,7 +27,7 @@ const AllIssues = () => {
             delaySpeed={1000}
           />
         </h1>
-        <p className="text-gray-600 text-base text-center md:w-[70%] mx-auto">
+        <p className="description md:w-[70%]">
           The “All Issues” page displays every reported city problem, including
           garbage, road damage, broken public property, and illegal
           constructions — all organized for easy viewing and management.
@@ -64,7 +63,6 @@ const AllIssues = () => {
         </select>
       </div>
 
-      
       <div className="w-11/12 mx-auto">
         {filteredData.length === 0 ? (
           <div className="text-center rounded-xl  shadow-md p-10 mt-10">
@@ -77,11 +75,11 @@ const AllIssues = () => {
             <p className="text-gray-500">Try changing the filters.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 justify-items-center">
             {filteredData.map((issue) => (
               <div
                 key={issue._id}
-                className="w-96 bg-white h-full flex flex-col rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
+                className="w-full bg-white h-full flex flex-col rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
               >
                 <img
                   src={issue.image}
@@ -134,9 +132,7 @@ const AllIssues = () => {
                   </div>
 
                   <Link to={`/issuesDetails/${issue._id}`} className="mt-auto">
-                    <button className="btn border-none md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-white w-full hover:text-[#F8B864]">
-                      See Details
-                    </button>
+                    <button className="btn w-full">See Details</button>
                   </Link>
                 </div>
               </div>

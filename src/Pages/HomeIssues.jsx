@@ -8,9 +8,9 @@ const HomeIssues = () => {
   const data = useLoaderData();
   console.log(data);
   return (
-    <div className="mx-auto w-11/12 mb-10">
+    <div className="mx-auto w-11/12 my-10 border border-black">
       <div className=" mb-6">
-        <h1 className="text-[#464646] poppins text-center font-semibold text-3xl">
+        <h1 className="title poppins">
           <Typewriter
             words={["Recent Complaints"]}
             loop={1}
@@ -21,7 +21,7 @@ const HomeIssues = () => {
           />
         </h1>
 
-        <p className="text-[#989EA9]   md:w-[60%] text-base mx-auto text-center mt-2">
+        <p className="description   md:w-[60%]  mt-2">
           This section shows the latest city issues reported by users, including
           garbage problems, road damage, illegal constructions, and broken
           public properties needing quick attention.
@@ -30,7 +30,7 @@ const HomeIssues = () => {
 
       {/* cards */}
 
-      <div className="grid grid-cols-1 border border-black sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+      <div className="grid grid-cols-1 border border-black sm:grid-cols-2 lg:grid-cols-4 gap-3 justify-items-center">
         {data.map((issue) => (
           <div
             key={issue._id}
@@ -61,7 +61,6 @@ const HomeIssues = () => {
               <div className="flex gap-8 items-center justify-between w-[95%] mx-auto">
                 {/* anount */}
                 <p className="text-gray-700 font-semibold mb-4">
-                  Amount:{" "}
                   <span className="text-green-600 font-bold">
                     {issue.amount}
                   </span>
@@ -85,9 +84,7 @@ const HomeIssues = () => {
               </div>
 
               <Link to={`/issuesDetails/${issue._id}`} className="mt-auto">
-                <button className="btn border-none md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-white w-full hover:text-[#F8B864]">
-                  See Details
-                </button>
+                <button className="btn w-full">See Details</button>
               </Link>
             </div>
           </div>
