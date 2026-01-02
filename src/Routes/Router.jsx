@@ -12,8 +12,8 @@ import AuthLayout from "../Layouts/AuthLayout";
 import PrivateRoute from "../Provider/PrivateRoute";
 import MyIssues from "../Pages/MyIssues";
 import MyContribution from "../Pages/MyContribution";
-import ErrorPage from "../Pages/ErrorPage";
-import AddIssue from "../Pages/AddIssue";
+import ErrorPage from "../Pages/ErrorPage"
+import AddIssue from "../Pages/AddIssue"
 
 const router = createBrowserRouter([
   {
