@@ -6,7 +6,7 @@ import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   const handleToggle = () => {
@@ -133,9 +133,12 @@ const Navbar = () => {
             </ul>
           </div>
 
-          <a className="btn btn-ghost text-2xl poppins flex items-center gap-2 text-[#F8B864]">
+          <NavLink
+            to="/"
+            className=" text-2xl font-semibold poppins flex items-center gap-2 text-[#F8B864]"
+          >
             CleanHub
-          </a>
+          </NavLink>
         </div>
 
         <div className="navbar-center hidden lg:flex">

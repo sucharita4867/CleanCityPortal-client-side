@@ -60,14 +60,14 @@ const CommunityStats = () => {
       </p>
 
       {/* Stats Cards */}
-      <section className="py-6 bg-gray-100 mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8  mx-auto">
+      <section className="py-6 w-11/12 mx-auto bg-gray-100 mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8  mx-auto">
         {loading ? (
           <p className="col-span-3 text-center text-lg">Loading stats...</p>
         ) : (
           stats.map((stat) => (
             <div
               key={stat.id}
-              className="flex flex-col  items-center justify-center py-6 bg-[#F8B864]  rounded-2xl shadow-lg  hover:scale-105 transition duration-300 "
+              className="flex flex-col   items-center justify-center  bg-[#F8B864]  rounded-2xl shadow-lg  hover:scale-105 transition duration-300 "
             >
               <div className={`p-4 rounded-full mb-4 text-white ${stat.color}`}>
                 {stat.icon}

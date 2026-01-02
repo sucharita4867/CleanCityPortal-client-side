@@ -6,8 +6,6 @@ const Category = () => {
   return (
     <div className="w-11/12 mx-auto my-12">
       <Marquee className="" pauseOnHover={true}>
-        {/* গ্রিড লেআউটটি সরিয়ে দেওয়া হয়েছে এবং কার্ডগুলিতে mr-6 যোগ করা হয়েছে */}
-
         {/* Garbage Card */}
         <div className="flex-1 p-2 border border-gray-300 rounded-md shadow-lg gap-3 items-center flex justify-center mr-6">
           <FaTrash className="text-7xl text-[#F8B864]" />

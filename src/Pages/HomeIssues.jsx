@@ -6,8 +6,9 @@ import { Fade } from "react-awesome-reveal";
 
 const HomeIssues = () => {
   const data = useLoaderData();
+  console.log(data);
   return (
-    <div className="w-11/12 mx-auto mb-10">
+    <div className="mx-auto w-11/12 mb-10">
       <div className=" mb-6">
         <h1 className="text-[#464646] poppins text-center font-semibold text-3xl">
           <Typewriter
@@ -29,11 +30,11 @@ const HomeIssues = () => {
 
       {/* cards */}
 
-      <div className="grid grid-cols-1 w-11/12 mx-auto sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+      <div className="grid grid-cols-1 border border-black sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
         {data.map((issue) => (
           <div
             key={issue._id}
-            className="w-96 bg-white h-full flex flex-col rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
+            className="w-full bg-white h-full flex flex-col rounded-xl shadow-md overflow-hidden border border-gray-200 transition-transform duration-300 hover:scale-[1.02]"
           >
             <img
               src={issue.image}
