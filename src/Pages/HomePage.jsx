@@ -6,6 +6,7 @@ import CommunityStats from "./CommunityStats";
 import JoinPage from "./JoinPage";
 import HowItWorks from "./HowItWorks";
 import WhyCleanHub from "./newHomeSection/WhyCleanHub";
+import CommunityVoices from "./newHomeSection/CommunityVoices";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
       <HomeIssues />
       <HowItWorks />
       <WhyCleanHub />
+      <CommunityVoices />
       <CommunityStats />
       <JoinPage />
     </div>
