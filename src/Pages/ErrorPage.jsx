@@ -4,7 +4,7 @@ import Footer from "../Components/Footer";
 
 const ErrorPage = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen pt-20 ">
       <Navbar />
       <main className="flex-grow flex items-center justify-center bg-gray-50 p-6">
         <div className="text-center bg-white p-10 rounded-lg shadow-xl max-w-lg mx-auto">
@@ -32,5 +32,3 @@ const ErrorPage = () => {
 };
 
 export default ErrorPage;
-
-

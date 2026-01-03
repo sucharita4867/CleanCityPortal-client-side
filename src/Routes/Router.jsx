@@ -14,6 +14,9 @@ import MyContribution from "../Pages/MyContribution";
 import ErrorPage from "../Pages/ErrorPage";
 import AddIssue from "../Pages/AddIssue";
 import About from "../Pages/About";
+import Contact from "../Pages/footerPage/Contact";
+import PrivacyPolicy from "../Pages/footerPage/PrivacyPolicy";
+import Terms from "../Pages/footerPage/Terms";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +34,18 @@ const router = createBrowserRouter([
         element: <AllIssues />,
         loader: () =>
           fetch("https://clean-city-portal-server.vercel.app/allIssues"),
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "privacy-policy",
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: "terms",
+        element: <Terms />,
       },
       {
         path: "/about",
@@ -70,6 +85,7 @@ const router = createBrowserRouter([
         `https://clean-city-portal-server.vercel.app/allIssues/${params.id}`
       ),
   },
+
   {
     path: "/auth",
     element: <AuthLayout />,
