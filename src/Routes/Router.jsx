@@ -13,6 +13,7 @@ import MyIssues from "../Pages/MyIssues";
 import MyContribution from "../Pages/MyContribution";
 import ErrorPage from "../Pages/ErrorPage";
 import AddIssue from "../Pages/AddIssue";
+import About from "../Pages/About";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         element: <AllIssues />,
         loader: () =>
           fetch("https://clean-city-portal-server.vercel.app/allIssues"),
+      },
+      {
+        path:'/about',
+        element: <About/>
       },
       {
         path: "/addIssue",

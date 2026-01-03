@@ -52,6 +52,11 @@ const Navbar = () => {
           AllIssues
         </NavLink>
       </li>
+      <li>
+        <NavLink to="/about" className={navClass}>
+          About
+        </NavLink>
+      </li>
 
       {user && (
         <>
