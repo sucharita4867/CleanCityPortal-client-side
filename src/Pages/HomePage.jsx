@@ -7,6 +7,8 @@ import JoinPage from "./JoinPage";
 import HowItWorks from "./HowItWorks";
 import WhyCleanHub from "./newHomeSection/WhyCleanHub";
 import CommunityVoices from "./newHomeSection/CommunityVoices";
+import CommunityPartners from "./newHomeSection/CommunityPartners";
+import FAQ from "./newHomeSection/FAQ";
 
 const HomePage = () => {
   return (
@@ -17,8 +19,10 @@ const HomePage = () => {
       <HowItWorks />
       <WhyCleanHub />
       <CommunityVoices />
+      <CommunityPartners />
       <CommunityStats />
       <JoinPage />
+      <FAQ />
     </div>
   );
 };

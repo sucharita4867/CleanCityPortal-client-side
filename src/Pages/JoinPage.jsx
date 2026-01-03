@@ -4,10 +4,10 @@ import { Typewriter } from "react-simple-typewriter";
 
 const JoinCleanDrive = () => {
   return (
-    <section className=" py-8 px-6 border border-black my-10">
+    <section className=" py-8 px-6 bg-white border border-black my-10">
       <div className="max-w-2xl mx-auto text-center">
         <div>
-          <h2 className="title poppins">
+          <h2 className="title poppins mb-2">
             <Typewriter
               words={["Join Our Clean Drive Initiative!"]}
               loop={1}
