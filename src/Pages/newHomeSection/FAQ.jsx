@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Typewriter } from "react-simple-typewriter";
 
 const faqs = [
   {
@@ -38,10 +39,19 @@ const FAQ = () => {
   return (
     <div className="w-11/12 mx-auto ">
       {/* Title */}
-      <h2 className="title mb-2">Frequently Asked Questions</h2>
-      <p className="description max-w-3xl mb-8">
-        Find answers to some of the most common questions about using CleanHub
-        and how the platform works.
+      <h1 className="title mb-2 poppins">
+        <Typewriter
+          words={["Frequently Asked Questions"]}
+          loop={1}
+          cursor
+          cursorStyle="_"
+          typeSpeed={70}
+        />
+      </h1>
+      <p className="description max-w-4xl mb-8">
+        Get clear answers to common questions about CleanHub, including issue
+        reporting, account requirements, tracking progress, and how communities
+        and authorities work together to resolve problems efficiently.
       </p>
 
       {/* FAQ Items */}

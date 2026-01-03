@@ -1,10 +1,19 @@
 import React from "react";
+import { Typewriter } from "react-simple-typewriter";
 
 const CommunityVoices = () => {
   return (
-    <div className="w-11/12 mx-auto my-10 border border-black">
+    <div className="w-11/12 mx-auto my-10">
       {/* Title */}
-      <h2 className="title mb-2">Community Voices</h2>
+      <h1 className="title mb-2 poppins">
+        <Typewriter
+          words={["Community Voices"]}
+          loop={1}
+          cursor
+          cursorStyle="_"
+          typeSpeed={70}
+        />
+      </h1>
       <p className="description max-w-3xl mb-8">
         Hear directly from community members who have used CleanHub to report
         local issues, stay informed about progress, and contribute to building a

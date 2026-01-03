@@ -8,7 +8,7 @@ const HomeIssues = () => {
   const data = useLoaderData();
   console.log(data);
   return (
-    <div className="mx-auto w-11/12 my-10 border border-black">
+    <div className="mx-auto w-11/12 my-10ck">
       <div className=" mb-6">
         <h1 className="title poppins">
           <Typewriter
@@ -30,7 +30,7 @@ const HomeIssues = () => {
 
       {/* cards */}
 
-      <div className="grid grid-cols-1 border border-black sm:grid-cols-2 lg:grid-cols-4 gap-3 justify-items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 justify-items-center">
         {data.map((issue) => (
           <div
             key={issue._id}

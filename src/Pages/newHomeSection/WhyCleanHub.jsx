@@ -2,6 +2,7 @@ import React from "react";
 import cityImg from "../../assets/whysection.jpeg";
 import { NavLink } from "react-router";
 import { FaArrowRight } from "react-icons/fa";
+import { Typewriter } from "react-simple-typewriter";
 
 const WhyCleanHub = () => {
   return (
@@ -18,9 +19,15 @@ const WhyCleanHub = () => {
 
         {/* Right Content */}
         <div>
-          <h2 className="text-[#464646] text-left font-semibold text-2xl  mb-2">
-            Why Choose CleanHub?
-          </h2>
+          <h1 className="text-[#464646] text-left font-semibold text-2xl poppins  mb-2">
+            <Typewriter
+              words={["Why Choose CleanHub?"]}
+              loop={1}
+              cursor
+              cursorStyle="_"
+              typeSpeed={70}
+            />
+          </h1>
 
           <p className="text-left  mb-4 max-w-xl text-[#464646] text-base ">
             CleanHub is designed to bridge the gap between citizens and civic

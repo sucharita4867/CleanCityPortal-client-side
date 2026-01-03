@@ -4,7 +4,7 @@ import { FaTrash, FaBuilding, FaHammer, FaRoad, FaWater } from "react-icons/fa";
 
 const Category = () => {
   return (
-    <div className="w-11/12 mx-auto my-10 border border-black">
+    <div className="w-11/12 mx-auto my-10">
       <Marquee className="" pauseOnHover={true}>
         {/* Garbage Card */}
         <div className="flex-1 p-2 border border-gray-300 rounded-xl shadow-lg gap-3 items-center flex justify-center mr-6">

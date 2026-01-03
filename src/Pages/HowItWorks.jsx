@@ -5,12 +5,21 @@ import {
   FaTools,
   FaCheckCircle,
 } from "react-icons/fa";
+import { Typewriter } from "react-simple-typewriter";
 
 const HowItWorks = () => {
   return (
     <div className="w-11/12 mx-auto my-10">
       {/* Title */}
-      <h2 className="title mb-2">How CleanHub Works</h2>
+      <h1 className="title mb-2 poppins">
+        <Typewriter
+          words={["How CleanHub Works"]}
+          loop={1}
+          cursor
+          cursorStyle="_"
+          typeSpeed={70}
+        />
+      </h1>
       <p className="description max-w-2xl mb-10">
         CleanHub makes it easy for citizens to report local issues and track
         their resolution through a transparent and community-driven process.
