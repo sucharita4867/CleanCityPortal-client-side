@@ -4,6 +4,7 @@ import Category from "./Category";
 import HomeIssues from "./Homeissues";
 import CommunityStats from "./CommunityStats";
 import JoinPage from "./JoinPage";
+import HowItWorks from "./HowItWorks";
 
 const HomePage = () => {
   return (
@@ -11,8 +12,9 @@ const HomePage = () => {
       <Banner />
       <Category />
       <HomeIssues />
+      <HowItWorks />
       <CommunityStats />
-      <JoinPage/>
+      <JoinPage />
     </div>
   );
 };
