@@ -101,11 +101,7 @@ const DetailsPage = () => {
             </div>
 
             {/* Button */}
-            <button
-              onClick={() => setShowModal(true)}
-              className="w-full py-3 font-semibold transition
-              bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-white hover:text-[#F8B864]"
-            >
+            <button onClick={() => setShowModal(true)} className="w-full btn">
               Pay Clean-Up Contribution
             </button>
           </div>
@@ -233,14 +229,11 @@ const DetailsPage = () => {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="btn md:px-8 text-center  rounded-full text-base  md:font-semibold  border-[#F8B864] bg-white  text-[#F8B864] hover:bg-white"
+                  className="btn"
                 >
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
-                >
+                <button type="submit" className="btn ">
                   Submit
                 </button>
               </div>

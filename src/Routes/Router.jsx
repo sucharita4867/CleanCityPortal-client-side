@@ -33,8 +33,8 @@ const router = createBrowserRouter([
           fetch("https://clean-city-portal-server.vercel.app/allIssues"),
       },
       {
-        path:'/about',
-        element: <About/>
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/addIssue",
@@ -64,11 +64,7 @@ const router = createBrowserRouter([
   },
   {
     path: "issuesDetails/:id",
-    element: (
-      <PrivateRoute>
-        <IssuesDetails />
-      </PrivateRoute>
-    ),
+    element: <IssuesDetails />,
     loader: ({ params }) =>
       fetch(
         `https://clean-city-portal-server.vercel.app/allIssues/${params.id}`
