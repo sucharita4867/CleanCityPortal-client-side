@@ -45,7 +45,7 @@ const AddIssue = () => {
 
   return (
     <div className="min-h-screen  from-[#fdfaf5] to-[#f6e8d7] flex justify-center items-center my-4">
-      <div className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-2xl border border-gray-200">
+      <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-2xl border border-gray-200">
         <h2 className="title poppins  mb-3">
           <Typewriter
             words={["Report a New Issue"]}

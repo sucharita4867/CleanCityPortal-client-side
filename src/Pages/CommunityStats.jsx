@@ -68,7 +68,7 @@ const CommunityStats = () => {
           stats.map((stat) => (
             <div
               key={stat.id}
-              className="flex flex-col   items-center justify-center  bg-[#F8B864]  rounded-2xl shadow-lg  hover:scale-105 transition duration-300 "
+              className="flex flex-col   items-center justify-center  bg-[#F8B864]  rounded-xl shadow-lg  hover:scale-105 transition duration-300 "
             >
               <div className={`p-4 rounded-full mb-4 text-white ${stat.color}`}>
                 {stat.icon}

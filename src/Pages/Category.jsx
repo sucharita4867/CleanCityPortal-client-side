@@ -7,7 +7,7 @@ const Category = () => {
     <div className="w-11/12 mx-auto my-10 border border-black">
       <Marquee className="" pauseOnHover={true}>
         {/* Garbage Card */}
-        <div className="flex-1 p-2 border border-gray-300 rounded-md shadow-lg gap-3 items-center flex justify-center mr-6">
+        <div className="flex-1 p-2 border border-gray-300 rounded-xl shadow-lg gap-3 items-center flex justify-center mr-6">
           <FaTrash className="text-7xl text-[#F8B864]" />
           <div>
             <h3 className="font-medium text-xl poppins text-[#F8B864]">
@@ -20,7 +20,7 @@ const Category = () => {
         </div>
 
         {/* Illegal Construction Card */}
-        <div className="flex-1 p-2 border border-gray-300 rounded-md shadow-lg gap-3 items-center flex justify-center mr-6">
+        <div className="flex-1 p-2 border border-gray-300 rounded-xl shadow-lg gap-3 items-center flex justify-center mr-6">
           <FaBuilding className="text-7xl text-[#F8B864]" />
           <div>
             <h3 className="font-medium text-xl poppins text-[#F8B864]">
@@ -33,7 +33,7 @@ const Category = () => {
         </div>
 
         {/* Waterlogging Card */}
-        <div className="flex-1 p-2 border border-gray-300 rounded-md shadow-lg gap-3 items-center flex justify-center mr-6">
+        <div className="flex-1 p-2 border border-gray-300 rounded-xl shadow-lg gap-3 items-center flex justify-center mr-6">
           <FaWater className="text-7xl text-[#F8B864]" />
           <div>
             <h3 className="font-medium text-xl poppins text-[#F8B864]">
@@ -46,7 +46,7 @@ const Category = () => {
         </div>
 
         {/* Broken Public Property Card */}
-        <div className="flex-1 p-2 border border-gray-300 rounded-md shadow-lg gap-3 items-center flex justify-center mr-6">
+        <div className="flex-1 p-2 border border-gray-300 rounded-xl shadow-lg gap-3 items-center flex justify-center mr-6">
           <FaHammer className="text-7xl text-[#F8B864]" />
           <div>
             <h3 className="font-medium text-xl poppins text-[#F8B864]">
@@ -58,7 +58,7 @@ const Category = () => {
           </div>
         </div>
 
-        <div className="flex-1 p-2 border border-gray-300 rounded-md shadow-lg gap-3 items-center flex justify-center mr-6">
+        <div className="flex-1 p-2 border border-gray-300 rounded-xl shadow-lg gap-3 items-center flex justify-center mr-6">
           <FaRoad className="text-7xl text-[#F8B864]" />
           <div>
             <h3 className="font-medium text-xl poppins text-[#F8B864]">
