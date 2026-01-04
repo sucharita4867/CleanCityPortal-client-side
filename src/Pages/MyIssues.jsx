@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 import { Typewriter } from "react-simple-typewriter";
+import { FaCheckCircle, FaClock } from "react-icons/fa";
 
 const MyIssues = () => {
   const { user } = use(AuthContext);
@@ -125,7 +126,7 @@ const MyIssues = () => {
         </p>
       </div>
 
-      <div className="w-11/12 mx-auto">
+      <div className=" mx-auto">
         {issues.length === 0 ? (
           <div className="text-center bg-white border border-gray-300 rounded-xl shadow-md p-10 mt-10">
             <h2 className="text-2xl font-semibold text-gray-700 mb-4">
@@ -140,7 +141,7 @@ const MyIssues = () => {
             </Link>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 justify-items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-3 justify-items-center">
             {issues.map((issue) => (
               <div
                 key={issue._id}
@@ -149,53 +150,45 @@ const MyIssues = () => {
                 <img
                   src={issue.image}
                   alt={issue.title}
-                  className="h-[200px] w-full object-cover"
+                  className="h-48 w-full object-cover"
                 />
 
                 <div className="p-5 flex flex-col flex-1">
-                  <h2 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2 h-12">
+                  <h2 className="text-xl font-semibold text-[#464646] mb-1 line-clamp-2 min-h-[48px]">
                     {issue.title}
                   </h2>
 
-                  <div className="flex justify-between gap-4 text-sm text-gray-500 mb-3 h-10">
-                    <p className="line-clamp-1">
-                      <span className="font-medium text-gray-700">
-                        Category:
-                      </span>
-                      {issue.category}
-                    </p>
-                    <p className="line-clamp-1">
-                      <span className="font-medium text-gray-700">
-                        Location:
-                      </span>
-                      {issue.location}
-                    </p>
-                  </div>
+                  <p className="text-sm text-[#464646] mb-2 line-clamp-2 min-h-[40px]">
+                    {issue.description}
+                  </p>
                   {/* Amount Status*/}
-                  <div className="flex gap-8 items-center justify-between w-[95%] mx-auto">
+                  <div className="flex justify-between items-center text-sm mt-auto mb-2">
                     {/* Amount */}
-                    <p className="text-gray-700 font-semibold mb-2">
-                      Amount:
-                      <span className="text-green-600 font-bold">
-                        {issue.amount}
-                      </span>
-                    </p>
+                    <span className="text-green-600 font-semibold">
+                      ${issue.amount}
+                    </span>
 
                     {/* Status */}
-                    <p className="text-gray-700 font-semibold mb-4">
-                      Status:
+                    <div className="flex items-center gap-1">
+                      {issue.status === "Resolved" ? (
+                        <FaCheckCircle className="text-green-600" />
+                      ) : issue.status === "In Progress" ? (
+                        <FaClock className="text-blue-600" />
+                      ) : (
+                        <FaClock className="text-red-600" />
+                      )}
                       <span
                         className={
                           issue.status === "Resolved"
-                            ? "text-green-600 font-bold"
+                            ? "text-green-600 font-semibold"
                             : issue.status === "In Progress"
-                            ? "text-blue-600 font-bold"
-                            : "text-red-600 font-bold"
+                            ? "text-blue-600 font-semibold"
+                            : "text-red-600 font-semibold"
                         }
                       >
                         {issue.status}
                       </span>
-                    </p>
+                    </div>
                   </div>
 
                   <div className="flex justify-between items-center gap-3 mt-auto pt-2">
@@ -316,10 +309,7 @@ const MyIssues = () => {
               </div>
 
               {/* Submit Button */}
-              <button
-                type="submit"
-                className="btn allBtn"
-              >
+              <button type="submit" className="btn allBtn">
                 Update Issue
               </button>
             </form>

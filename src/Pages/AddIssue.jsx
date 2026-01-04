@@ -8,17 +8,21 @@ const AddIssue = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const form = e.target;
+
     const formData = {
-      title: e.target.title.value,
-      category: e.target.category.value,
-      status: e.target.status.value,
-      location: e.target.location.value,
-      description: e.target.description.value,
-      image: e.target.image.value,
-      amount: e.target.amount.value,
+      title: form.title.value,
+      category: form.category.value,
+      status: form.status.value,
+      location: form.location.value,
+      description: form.description.value,
+      image: form.image.value,
+      amount: form.amount.value,
       date: new Date().toISOString(),
-      email: user.email,
+      email: user?.email,
     };
+
     fetch("https://clean-city-portal-server.vercel.app/allIssues", {
       method: "POST",
       headers: {
@@ -31,22 +35,22 @@ const AddIssue = () => {
         Swal.fire({
           title: "Issue added successfully!",
           icon: "success",
-          draggable: true,
         });
+        form.reset(); // ✅ clear form
       })
       .catch((error) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: { error },
+          text: error.message || "Something went wrong",
         });
       });
   };
 
   return (
-    <div className="min-h-screen  from-[#fdfaf5] to-[#f6e8d7] flex justify-center items-center my-4">
-      <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-2xl border border-gray-200">
-        <h2 className="title poppins  mb-3">
+    <div className="py-8 px-4">
+      <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-2xl border border-gray-200 mx-auto">
+        <h2 className="title poppins mb-4 text-center">
           <Typewriter
             words={["Report a New Issue"]}
             loop={1}
@@ -58,29 +62,29 @@ const AddIssue = () => {
         </h2>
 
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* title */}
+          {/* Title */}
           <div>
-            <label className="block text-gray-700 font-medium text-base mb-1">
+            <label className="block text-gray-700 font-medium mb-1">
               Issue Title
             </label>
             <input
               name="title"
               type="text"
-              className="rounded-full input w-full text-black focus:outline-none focus:border-[#F8B864] focus:ring-1 focus:ring-[#F8B864]"
-              placeholder="Enter issue title"
               required
+              placeholder="Enter issue title"
+              className="input w-full rounded-full text-black focus:border-[#F8B864] focus:ring-[#F8B864]"
             />
           </div>
+
           {/* Category */}
           <div>
-            <label className="block text-gray-700 font-medium mb-1 text-base">
+            <label className="block text-gray-700 font-medium mb-1">
               Category
             </label>
             <select
               name="category"
               required
-              className="w-full px-4 py-2 border border-gray-300
-               rounded-full  focus:outline-none focus:border-[#F8B864] focus:ring-1 focus:ring-[#F8B864]  text-black"
+              className="w-full px-4 py-2 border rounded-full text-black focus:border-[#F8B864] focus:ring-[#F8B864]"
             >
               <option value="">Select a category</option>
               <option value="Garbage">Garbage</option>
@@ -92,19 +96,17 @@ const AddIssue = () => {
               <option value="Road Damage">Road Damage</option>
             </select>
           </div>
-          {/* Status  Location */}
+
+          {/* Status & Location */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {/* Status */}
             <div>
-              <label className="block text-gray-700 font-medium mb-1 text-base">
+              <label className="block text-gray-700 font-medium mb-1">
                 Status
               </label>
               <select
                 name="status"
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-full  
-         focus:outline-none focus:border-[#F8B864] focus:ring-1 
-         focus:ring-[#F8B864] text-black"
+                className="w-full px-4 py-2 border rounded-full text-black focus:border-[#F8B864] focus:ring-[#F8B864]"
               >
                 <option value="All">All Status</option>
                 <option value="Pending">Pending</option>
@@ -113,83 +115,78 @@ const AddIssue = () => {
               </select>
             </div>
 
-            {/* Location */}
             <div>
-              <label className="block text-gray-700 text-base font-medium mb-1">
+              <label className="block text-gray-700 font-medium mb-1">
                 Location
               </label>
               <input
-                className="rounded-full input w-full text-black 
-        focus:outline-none focus:border-[#F8B864] focus:ring-1 
-        focus:ring-[#F8B864]"
-                type="text"
                 name="location"
-                placeholder="Enter issue location"
+                type="text"
                 required
+                placeholder="Enter issue location"
+                className="input w-full rounded-full text-black focus:border-[#F8B864] focus:ring-[#F8B864]"
               />
             </div>
           </div>
 
           {/* Description */}
           <div>
-            <label className="block text-gray-700 text-base font-medium mb-1">
+            <label className="block text-gray-700 font-medium mb-1">
               Description
             </label>
             <textarea
               name="description"
               rows="4"
-              placeholder="Describe the issue..."
               required
-              className="w-full px-4 py-2 border  text-black rounded-lg  focus:outline-none focus:border-[#F8B864] focus:ring-1 focus:ring-[#F8B864]"
+              placeholder="Describe the issue..."
+              className="w-full px-4 py-2 border rounded-lg text-black focus:border-[#F8B864] focus:ring-[#F8B864]"
             ></textarea>
           </div>
+
           {/* Image */}
           <div>
-            <label className="block text-gray-700 text-base font-medium mb-1">
-              Image
+            <label className="block text-gray-700 font-medium mb-1">
+              Image URL
             </label>
             <input
-              className="rounded-full input w-full text-black focus:outline-none focus:border-[#F8B864] focus:ring-1 focus:ring-[#F8B864]"
-              type="text"
               name="image"
-              placeholder="Enter image URL"
+              type="text"
               required
+              placeholder="Enter image URL"
+              className="input w-full rounded-full text-black focus:border-[#F8B864] focus:ring-[#F8B864]"
             />
           </div>
-          {/* amount */}
-          <div className="flex-1">
-            <label className="block text-gray-700 text-base font-medium mb-1">
+
+          {/* Amount */}
+          <div>
+            <label className="block text-gray-700 font-medium mb-1">
               Amount
             </label>
             <input
-              type="number"
               name="amount"
-              placeholder="Enter estimated budget"
+              type="number"
               required
-              className="w-full px-4 input py-2 border rounded-full text-black focus:outline-none focus:border-[#F8B864] focus:ring-1 focus:ring-[#F8B864] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+              placeholder="Enter estimated budget"
+              className="input w-full rounded-full text-black focus:border-[#F8B864] focus:ring-[#F8B864]"
             />
           </div>
 
           {/* Email */}
           <div>
-            <label className="block text-gray-700 text-base font-medium mb-1">
+            <label className="block text-gray-700 font-medium mb-1">
               Email
             </label>
             <input
-              className="rounded-full input w-full text-black focus:outline-none focus:border-[#F8B864] focus:ring-1 focus:ring-[#F8B864]"
-              name="email"
-              placeholder="Enter issue location"
-              //
               type="email"
               value={user?.email || ""}
               readOnly
+              className="input w-full rounded-full text-black bg-gray-100"
             />
           </div>
-          <div className="pt-4">
-            <button type="submit" className="btn allBtn w-full">
-              Submit Issue
-            </button>
-          </div>
+
+          <button type="submit" className="btn allBtn w-full mt-4">
+            Submit Issue
+          </button>
         </form>
       </div>
     </div>

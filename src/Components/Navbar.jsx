@@ -1,11 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaUserCircle } from "react-icons/fa";
 
-const Navbar = () => {
+const Navbar = ({ onMenuClick }) => {
   const { user, logOut } = useContext(AuthContext);
+  const location = useLocation();
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -34,6 +35,7 @@ const Navbar = () => {
         });
       });
   };
+  const isDashboard = location.pathname.startsWith("/dashboard");
 
   const navClass = ({ isActive }) =>
     isActive
@@ -61,42 +63,58 @@ const Navbar = () => {
       {user && (
         <>
           <li>
-            <NavLink to="/addIssue" className={navClass}>
-              AddIssue
+            <NavLink to="/dashboard" className={navClass}>
+              Dashboard
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/myIssue" className={navClass}>
+          {/* <li>
+            <NavLink to="/dashboard/myIssue" className={navClass}>
               MyIssue
             </NavLink>
           </li>
           <li>
-            <NavLink to="/myContribution" className={navClass}>
+            <NavLink to="/dashboard/myContribution" className={navClass}>
               MyContribution
             </NavLink>
-          </li>
+          </li> */}
         </>
       )}
     </>
   );
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 bg-base-100 ">
+    <div
+      className="
+    fixed top-0 left-0 w-full h-16 z-50 bg-base-100
+    "
+    >
       <div className="navbar md:w-11/12 md:mx-auto">
-        <div className="navbar-start">
-          {/* Mobile menu */}
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn allBtn btn-ghost lg:hidden">
-              ☰
-            </div>
-
-            <ul
-              tabIndex={-1}
-              className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-[9999]"
+        <div className="navbar-start gap-2">
+          {/* ☰ for Dashboard → opens sidebar */}
+          {isDashboard && (
+            <button
+              onClick={onMenuClick}
+              className="btn allBtn btn-ghost md:hidden"
             >
-              {links}
-            </ul>
-          </div>
+              ☰
+            </button>
+          )}
+
+          {/* ☰ for normal pages → dropdown menu */}
+          {!isDashboard && (
+            <div className="dropdown">
+              <button tabIndex={0} className="btn allBtn btn-ghost lg:hidden">
+                ☰
+              </button>
+
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-[9999]"
+              >
+                {links}
+              </ul>
+            </div>
+          )}
 
           <NavLink
             to="/"
@@ -106,9 +124,11 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal gap-4">{links}</ul>
-        </div>
+        {!isDashboard && (
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal gap-4">{links}</ul>
+          </div>
+        )}
 
         <div className="navbar-end gap-2">
           {user ? (
@@ -135,6 +155,11 @@ const Navbar = () => {
                 <li>
                   <button onClick={handleLogout} className="btn allBtn mt-2">
                     Logout
+                  </button>
+                </li>
+                <li>
+                  <button className="btn allBtn mt-2 w-full">
+                    <NavLink to="/dashboard/profile">profile</NavLink>
                   </button>
                 </li>
               </ul>

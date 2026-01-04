@@ -17,6 +17,9 @@ import About from "../Pages/About";
 import Contact from "../Pages/footerPage/Contact";
 import PrivacyPolicy from "../Pages/footerPage/PrivacyPolicy";
 import Terms from "../Pages/footerPage/Terms";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import DashboardHome from "../Pages/DashboardHome";
+import Profile from "../Components/Profile";
 
 const router = createBrowserRouter([
   {
@@ -51,30 +54,6 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About />,
       },
-      {
-        path: "/addIssue",
-        element: (
-          <PrivateRoute>
-            <AddIssue />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/myIssue",
-        element: (
-          <PrivateRoute>
-            <MyIssues />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/myContribution",
-        element: (
-          <PrivateRoute>
-            <MyContribution />
-          </PrivateRoute>
-        ),
-      },
     ],
   },
   {
@@ -84,6 +63,48 @@ const router = createBrowserRouter([
       fetch(
         `https://clean-city-portal-server.vercel.app/allIssues/${params.id}`
       ),
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <DashboardHome />,
+      },
+      {
+        path: "addIssue",
+        element: (
+          <PrivateRoute>
+            <AddIssue />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myIssue",
+        element: (
+          <PrivateRoute>
+            <MyIssues />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myContribution",
+        element: (
+          <PrivateRoute>
+            <MyContribution />
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
 
   {

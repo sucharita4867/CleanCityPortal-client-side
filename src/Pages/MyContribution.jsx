@@ -100,7 +100,7 @@ const MyContribution = () => {
 
   return (
     <div>
-      <div className="my-6 pb-6 ">
+      <div className=" pb-6 ">
         <div className="flex flex-col md:flex-row justify-center items-center mb-3">
           <h1 className="title poppins ">
             <Typewriter
