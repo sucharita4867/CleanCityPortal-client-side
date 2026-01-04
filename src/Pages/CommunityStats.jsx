@@ -52,9 +52,9 @@ const CommunityStats = () => {
       </h1>
 
       <p className="description md:w-[55%] mt-2">
-        {" "}
+        
         Stay informed with real-time updates. Check the number of active users,
-        resolved issues, and pending tasks contributed by the community.{" "}
+        resolved issues, and pending tasks contributed by the community.
       </p>
 
       {/* Cards */}

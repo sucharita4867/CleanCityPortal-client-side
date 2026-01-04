@@ -161,13 +161,13 @@ const MyIssues = () => {
                     <p className="line-clamp-1">
                       <span className="font-medium text-gray-700">
                         Category:
-                      </span>{" "}
+                      </span>
                       {issue.category}
                     </p>
                     <p className="line-clamp-1">
                       <span className="font-medium text-gray-700">
                         Location:
-                      </span>{" "}
+                      </span>
                       {issue.location}
                     </p>
                   </div>
@@ -175,7 +175,7 @@ const MyIssues = () => {
                   <div className="flex gap-8 items-center justify-between w-[95%] mx-auto">
                     {/* Amount */}
                     <p className="text-gray-700 font-semibold mb-2">
-                      Amount:{" "}
+                      Amount:
                       <span className="text-green-600 font-bold">
                         {issue.amount}
                       </span>
@@ -183,7 +183,7 @@ const MyIssues = () => {
 
                     {/* Status */}
                     <p className="text-gray-700 font-semibold mb-4">
-                      Status:{" "}
+                      Status:
                       <span
                         className={
                           issue.status === "Resolved"

@@ -1,4 +1,4 @@
-import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaMapMarkerAlt, FaStar } from "react-icons/fa";
 import { MdCategory } from "react-icons/md";
 import { IoMdMail } from "react-icons/io";
 import { useLoaderData } from "react-router";
@@ -15,6 +15,7 @@ const DetailsPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const formData = {
       issueId: issue._id,
       title: e.target.title.value,
@@ -24,98 +25,179 @@ const DetailsPage = () => {
       phone: e.target.phone.value,
       category: e.target.category.value,
       address: e.target.address.value,
-      date: new Date().toISOString(),
       additionalInfo: e.target.additionalInfo.value,
+      date: new Date().toISOString(),
     };
+
     fetch("https://clean-city-portal-server.vercel.app/allContribution", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     })
-      .then((res) => res.json())
       .then(() => {
         setShowModal(false);
-        Swal.fire({
-          title: "Contribution added successfully!",
-          icon: "success",
-          draggable: true,
-        });
+        Swal.fire("Success!", "Contribution added successfully!", "success");
       })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: error.message || "Something went wrong!",
-        });
+      .catch(() => {
+        Swal.fire("Error!", "Something went wrong!", "error");
       });
+  };
+
+  const handleContributionClick = () => {
+    if (!user) {
+      Swal.fire({
+        icon: "warning",
+        title: "Login Required",
+        text: "Please login to make a clean-up contribution.",
+      });
+      return;
+    }
+
+    setShowModal(true);
   };
 
   return (
     <div>
-      <header>
-        <Navbar />
-      </header>
-      <div className="min-h-screen bg-gray-50 py-10 px-4 md:px-10 flex justify-center items-center">
-        <div className="bg-white shadow-xl rounded-2xl overflow-hidden w-full max-w-3xl border border-gray-200">
-          <div className="w-full h-64 md:h-80 overflow-hidden">
-            <img
-              src={issue.image}
-              alt={issue.title}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-            />
+      <Navbar />
+
+      <div className="bg-gray-50 min-h-screen text-black pt-20 py-10">
+        <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* LEFT SIDE */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Image */}
+            <div className="bg-white rounded-2xl overflow-hidden shadow">
+              <img
+                src={issue.image}
+                alt={issue.title}
+                className="w-full h-80 object-cover"
+              />
+            </div>
+
+            {/* Gallery */}
+            {issue.images?.length > 0 && (
+              <div className="grid grid-cols-3 gap-3">
+                {issue.images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img}
+                    alt="issue"
+                    className="h-24 w-full object-cover rounded-xl border"
+                  />
+                ))}
+              </div>
+            )}
+
+            {/* Overview */}
+            <div className="bg-white rounded-2xl p-6 shadow">
+              <h1 className="text-[#464646] poppins font-semibold text-2xl mb-2">
+                {issue.title}
+              </h1>
+
+              <div className="flex gap-4 text-sm text-[#464646] mb-2">
+                <span className="flex items-center gap-1">
+                  <MdCategory /> {issue.category}
+                </span>
+                <span className="flex items-center gap-1">
+                  <FaMapMarkerAlt /> {issue.location}
+                </span>
+              </div>
+
+              <h3 className="font-semibold text-lg text-[#464646] mb-1">
+                Overview
+              </h3>
+              <p className="text-[#464646] leading-relaxed">
+                {issue.description}
+              </p>
+            </div>
+
+            {/* Reviews */}
+            <div className="bg-white rounded-2xl p-6 shadow">
+              <h3 className="text-[#464646] font-semibold text-lg mb-1">
+                Reviews & Ratings
+              </h3>
+              <div className="flex gap-1 text-yellow-500 mb-2">
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+              </div>
+              <p className="text-sm text-[#464646]">
+                Reviews will be available once users start sharing feedback.
+              </p>
+            </div>
+
+            {/* Related */}
+            <div className="bg-white rounded-2xl p-6 shadow">
+              <h3 className="text-[#464646] font-semibold text-lg mb-3">
+                Related Issues
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-3 text-sm text-[#464646]">
+                <div className="border p-3 rounded-xl">
+                  Waterlogging after rain
+                </div>
+                <div className="border p-3 rounded-xl">
+                  Road damage near market
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="p-6 md:p-8">
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-2">
-              {issue.title}
-            </h1>
+          {/* RIGHT SIDE */}
+          <div className="space-y-6">
+            {/* Key Info */}
+            <div className="bg-white rounded-2xl p-6 shadow">
+              <h3 className=" text-[#464646] font-semibold text-lg mb-2">
+                Key Information
+              </h3>
 
-            <div className="flex flex-wrap items-center gap-4 text-gray-600 mb-4">
-              <p className="flex items-center gap-2 text-sm md:text-base">
-                <MdCategory className="text-blue-500" />
-                <span className="font-medium">{issue.category}</span>
-              </p>
-              <p className="flex items-center gap-2 text-sm md:text-base">
-                <FaMapMarkerAlt className="text-red-500" />
-                <span>{issue.location}</span>
-              </p>
+              <ul className="space-y-2 text-sm text-gray-700">
+                <li>
+                  <strong>Status:</strong> {issue.status}
+                </li>
+                <li>
+                  <strong>Estimated Cost:</strong>
+                  <span className="text-green-600 font-semibold">
+                    ${issue.amount}
+                  </span>
+                </li>
+                <li>
+                  <strong>Reported On:</strong> {issue.date}
+                </li>
+              </ul>
             </div>
 
-            <p className="text-gray-700 leading-relaxed mb-6">
-              {issue.description}
-            </p>
-
-            <div className="bg-gray-100 rounded-xl p-4 flex justify-between items-center mb-4">
-              <p className="text-gray-800 font-semibold">
-                Estimated Cost:{" "}
-                <span className="text-green-600">${issue.amount}</span>
-              </p>
-              <p className="text-sm text-gray-500">Reported on: {issue.date}</p>
+            {/* Contact */}
+            <div className="bg-white rounded-2xl p-6 shadow">
+              <h3 className="text-[#464646] font-semibold text-lg mb-2">
+                Contact
+              </h3>
+              <div className="flex items-center text-[#464646] gap-2 text-sm">
+                <IoMdMail /> {issue.email}
+              </div>
             </div>
 
-            <div className="flex items-center gap-2 mb-6">
-              <IoMdMail className="text-gray-600 text-lg" />
-              <p className="text-gray-700">{issue.email}</p>
-            </div>
+            {/* Action */}
+            <div className="bg-white rounded-2xl p-6 shadow">
+              {/* <button onClick={() => setShowModal(true)} className="btn w-full">
+                Pay Clean-Up Contribution
+              </button> */}
 
-            {/* Button */}
-            <button onClick={() => setShowModal(true)} className="w-full btn">
-              Pay Clean-Up Contribution
-            </button>
+              <button onClick={handleContributionClick} className="btn w-full">
+                Pay Clean-Up Contribution
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Modal */}
+      {/* MODAL (unchanged logic) */}
       {showModal && (
-        <div className="fixed inset-0  bg-opacity-50 flex justify-center items-center z-50">
+        <div className="fixed inset-0 bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
             <h2 className="text-xl font-bold mb-2 text-gray-800 text-center">
               Pay Clean-Up Contribution
             </h2>
-
             <form onSubmit={handleSubmit} className="space-y-1">
               {/* title */}
               <label className="block text-gray-700 text-sm font-medium mb-1">
@@ -166,7 +248,7 @@ const DetailsPage = () => {
                   />
                 </div>
               </div>
-              {/*  */}
+              {/* */}
               <label className="block text-gray-700 text-sm font-medium mb-1">
                 Contributor name
               </label>
@@ -177,7 +259,7 @@ const DetailsPage = () => {
                 required
                 className="w-full p-2 border rounded text-black"
               />
-              <label className="block text-gray-700 text-sm font-medium mb-1">
+              <label className="block text-black text-sm font-medium mb-1">
                 Email
               </label>
               <input
@@ -185,7 +267,7 @@ const DetailsPage = () => {
                 name="email"
                 defaultValue={user?.email}
                 readOnly
-                className="w-full p-2 border rounded bg-gray-100 text-black"
+                className="w-full p-2 border rounded  text-black"
               />
               <div className="flex items-center gap-4 justify-between">
                 {/* phone no */}
@@ -215,7 +297,7 @@ const DetailsPage = () => {
                   />
                 </div>
               </div>
-              {/*  */}
+              {/* */}
               <label className="block text-gray-700 text-sm font-medium mb-1">
                 Additional info
               </label>
@@ -224,7 +306,6 @@ const DetailsPage = () => {
                 placeholder="Additional info"
                 className="w-full p-2 border rounded text-black"
               ></textarea>
-
               <div className="flex justify-end gap-3 pt-2">
                 <button
                   type="button"
@@ -242,9 +323,7 @@ const DetailsPage = () => {
         </div>
       )}
 
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 };
