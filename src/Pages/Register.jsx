@@ -113,7 +113,7 @@ const Register = () => {
 
             <button
               type="submit"
-              className="btn w-full mt-4 bg-[#F8B864] text-white rounded-full"
+              className="btn allBtn w-full mt-4 bg-[#F8B864] text-white rounded-full"
             >
               Register
             </button>
@@ -121,7 +121,7 @@ const Register = () => {
             <button
               type="button"
               onClick={handleGoogle}
-              className="btn w-full mt-2 bg-white text-black rounded-full border border-[#F8B864]"
+              className="btn allBtn w-full mt-2 bg-white text-black rounded-full border border-[#F8B864]"
             >
               <FcGoogle className="text-xl" /> Login with Google
             </button>
@@ -129,7 +129,7 @@ const Register = () => {
             <p className="text-center text-sm font-medium mt-2">
               Already have an account?
               <Link className="font-bold text-blue-600" to="/auth/login">
-                {" "}
+                
                 Login
               </Link>
             </p>

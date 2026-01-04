@@ -116,7 +116,7 @@ const HomeIssues = () => {
 
               {/* Button */}
               <Link to={`/issuesDetails/${issue._id}`}>
-                <button className="btn w-full">View Details</button>
+                <button className="btn allBtn w-full">View Details</button>
               </Link>
             </div>
           </div>

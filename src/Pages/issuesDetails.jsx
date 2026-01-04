@@ -183,7 +183,10 @@ const DetailsPage = () => {
                 Pay Clean-Up Contribution
               </button> */}
 
-              <button onClick={handleContributionClick} className="btn w-full">
+              <button
+                onClick={handleContributionClick}
+                className="btn allBtn w-full"
+              >
                 Pay Clean-Up Contribution
               </button>
             </div>
@@ -310,11 +313,11 @@ const DetailsPage = () => {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="btn"
+                  className="btn allBtn"
                 >
                   Cancel
                 </button>
-                <button type="submit" className="btn ">
+                <button type="submit" className="btn allBtn">
                   Submit
                 </button>
               </div>

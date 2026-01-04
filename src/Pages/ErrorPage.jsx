@@ -20,7 +20,7 @@ const ErrorPage = () => {
           </p>
           <a
             href="/"
-            className="btn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
+            className="btn allBtn md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]"
           >
             Go to Homepage
           </a>

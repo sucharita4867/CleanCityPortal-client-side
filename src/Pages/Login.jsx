@@ -70,12 +70,10 @@ const Login = () => {
               placeholder="Password"
               required
             />
-            <button className="btn mt-4 w-full md:px-8 text-center bg-[#F8B864] rounded-full text-base text-white md:font-semibold hover:border hover:border-[#F8B864] hover:bg-[white] hover:text-[#F8B864]">
-              Login
-            </button>
+            <button className="btn mt-4 ">Login</button>
             <button
               onClick={handleGoogle}
-              className="btn bg-white text-black  rounded-full border border-[#F8B864]"
+              className="btn allBtn bg-white text-black  rounded-full border "
             >
               <FcGoogle className="text-xl" />
               Login with Google

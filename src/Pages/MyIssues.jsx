@@ -135,7 +135,7 @@ const MyIssues = () => {
               Report your first community cleanliness issue and help make your
               city better.
             </p>
-            <Link to="/addIssue" className="btn">
+            <Link to="/addIssue" className="btn allBtn">
               Report an Issue
             </Link>
           </div>
@@ -202,14 +202,14 @@ const MyIssues = () => {
                     <button
                       onClick={() => handleDelete(issue)}
                       type="button"
-                      className="btn"
+                      className="btn allBtn"
                     >
                       Delete
                     </button>
 
                     <button
                       onClick={() => setSelectedIssue(issue)}
-                      className="btn "
+                      className="btn allBtn"
                     >
                       Update
                     </button>
@@ -318,7 +318,7 @@ const MyIssues = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="btn w-full bg-[#F8B864] text-white rounded-full text-base font-semibold hover:border hover:border-[#F8B864] hover:bg-white hover:text-[#F8B864]"
+                className="btn allBtn"
               >
                 Update Issue
               </button>

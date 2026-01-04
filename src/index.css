@@ -18,7 +18,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.btn {
+.allBtn {
   @apply px-8 text-center bg-[#F8B864] rounded-full text-base text-white font-semibold border border-transparent hover:border-[#F8B864] hover:bg-white hover:text-[#F8B864] transition duration-300;
 }
 

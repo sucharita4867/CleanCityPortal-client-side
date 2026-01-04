@@ -76,7 +76,7 @@ const Contact = () => {
             ></textarea>
           </div>
 
-          <button type="submit" className="btn w-full">
+          <button type="submit" className="btn allBtn w-full">
             Send Message
           </button>
         </form>

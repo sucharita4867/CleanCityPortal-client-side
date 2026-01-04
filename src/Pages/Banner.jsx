@@ -53,7 +53,7 @@ const Banner = () => {
               Report local issues, raise awareness, and help create a healthier
               environment for everyone.
             </p>
-            <Link to="/allIssues" className="btn">
+            <Link to="/allIssues" className="btn allBtn">
               View City Issues
               <FaArrowRight />
             </Link>
@@ -77,7 +77,7 @@ const Banner = () => {
               Join hands with your community to identify problems and bring
               positive change to your neighborhood.
             </p>
-            <Link to="/auth/register" className="btn">
+            <Link to="/auth/register" className="btn allBtn">
               Join the Community
               <FaArrowRight />
             </Link>
@@ -101,7 +101,7 @@ const Banner = () => {
               Take small actions today to ensure a cleaner and greener future
               for the next generation.
             </p>
-            <Link to="/about" className="btn">
+            <Link to="/about" className="btn allBtn">
               Learn More
               <FaArrowRight />
             </Link>

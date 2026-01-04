@@ -67,7 +67,7 @@ const WhyCleanHub = () => {
           </ul>
 
           {/* CTA */}
-          <NavLink to="about" className="btn">
+          <NavLink to="about" className="btn allBtn">
             Learn More About CleanHub
             <FaArrowRight />
           </NavLink>

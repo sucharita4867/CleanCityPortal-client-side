@@ -186,7 +186,7 @@ const AddIssue = () => {
             />
           </div>
           <div className="pt-4">
-            <button type="submit" className="btn w-full">
+            <button type="submit" className="btn allBtn w-full">
               Submit Issue
             </button>
           </div>

@@ -86,7 +86,7 @@ const Navbar = () => {
         <div className="navbar-start">
           {/* Mobile menu */}
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn allBtn btn-ghost lg:hidden">
               ☰
             </div>
 
@@ -128,12 +128,12 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-[9999]"
               >
                 <li>
-                  <button onClick={handleToggle} className="btn">
+                  <button onClick={handleToggle} className="btn allBtn">
                     {theme === "light" ? "Switch to Dark" : "Switch to Light"}
                   </button>
                 </li>
                 <li>
-                  <button onClick={handleLogout} className="btn mt-2">
+                  <button onClick={handleLogout} className="btn allBtn mt-2">
                     Logout
                   </button>
                 </li>
@@ -141,10 +141,10 @@ const Navbar = () => {
             </div>
           ) : (
             <>
-              <Link to="/auth/login" className="btn">
+              <Link to="/auth/login" className="btn allBtn">
                 Login
               </Link>
-              <Link to="/auth/register" className="btn">
+              <Link to="/auth/register" className="btn allBtn">
                 Register
               </Link>
             </>

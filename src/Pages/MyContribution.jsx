@@ -124,7 +124,7 @@ const MyContribution = () => {
           <button
             onClick={handleDownloadPDF}
             disabled={contributions.length === 0}
-            className="btn "
+            className="btn allBtn"
           >
             <FaDownload className="mr-2" />
             Download Report
