@@ -1,3 +1,4 @@
+import { FaPlusCircle } from "react-icons/fa";
 import { NavLink } from "react-router";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
@@ -34,6 +35,17 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         {/* MENU (scrollable only this part) */}
         <nav className="flex-1 overflow-y-auto p-4 space-y-2">
           <NavLink
+            to="/"
+            onClick={() => setIsOpen(false)}
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-lg ${
+                isActive ? "bg-[#F8B864] text-black" : "hover:bg-zinc-800"
+              }`
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
             to="/dashboard"
             end
             onClick={() => setIsOpen(false)}
@@ -47,18 +59,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           </NavLink>
 
           <NavLink
-            to="/"
-            onClick={() => setIsOpen(false)}
-            className={({ isActive }) =>
-              `block px-4 py-2 rounded-lg ${
-                isActive ? "bg-[#F8B864] text-black" : "hover:bg-zinc-800"
-              }`
-            }
-          >
-            Home
-          </NavLink>
-
-          <NavLink
             to="/dashboard/addIssue"
             onClick={() => setIsOpen(false)}
             className={({ isActive }) =>
@@ -67,7 +67,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               }`
             }
           >
-            Add Issue
+            <FaPlusCircle />Add Issue
           </NavLink>
 
           <NavLink
