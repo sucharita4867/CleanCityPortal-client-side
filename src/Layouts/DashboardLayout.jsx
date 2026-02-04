@@ -8,9 +8,9 @@ const DashboardLayout = () => {
 
   return (
     <div className="min-h-screen bg-zinc-100 dark:bg-zinc-900">
-      <Navbar onMenuClick={() => setIsOpen(true)} />
+      {/* <Navbar onMenuClick={() => setIsOpen(true)} /> */}
 
-      <div className="flex pt-16">
+      <div className="flex ">
         {/* Sidebar takes its own width */}
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
 

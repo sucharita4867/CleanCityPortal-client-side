@@ -99,7 +99,6 @@ const Navbar = ({ onMenuClick }) => {
               ☰
             </button>
           )}
-
           {/* ☰ for normal pages → dropdown menu */}
           {!isDashboard && (
             <div className="dropdown">

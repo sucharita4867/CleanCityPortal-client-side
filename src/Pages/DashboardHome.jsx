@@ -1,6 +1,6 @@
 const DashboardHome = () => {
   return (
-    <div className="text-black">
+    <div className="text-black dark:text-white">
       <h1 className="text-3xl font-bold mb-6">Dashboard Overview</h1>
 
       {/* Overview Cards */}

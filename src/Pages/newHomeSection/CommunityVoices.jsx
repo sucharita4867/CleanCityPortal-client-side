@@ -24,7 +24,7 @@ const CommunityVoices = () => {
       <div className="space-y-10 max-w-4xl mx-auto">
         {/* Item 1 */}
         <div className="border-l-4 border-[#F8B864] pl-6">
-          <p className="text-base md:text-lg text-base-content italic mb-2">
+          <p className="text-base md:text-lg text-[#464646] italic mb-2">
             “CleanHub made it very easy to report garbage issues in our area.
             Seeing updates gave us confidence that the problem would be solved.”
           </p>
@@ -33,7 +33,7 @@ const CommunityVoices = () => {
 
         {/* Item 2 */}
         <div className="border-l-4 border-[#F8B864] pl-6">
-          <p className="text-base md:text-lg text-base-content italic mb-2">
+          <p className="text-base md:text-lg text-[#464646] italic mb-2">
             “The platform brings transparency. Anyone can see what issues are
             reported and what actions are being taken.”
           </p>
@@ -42,7 +42,7 @@ const CommunityVoices = () => {
 
         {/* Item 3 */}
         <div className="border-l-4 border-[#F8B864] pl-6">
-          <p className="text-base md:text-lg text-base-content italic mb-2">
+          <p className="text-base md:text-lg text-[#464646] italic mb-2">
             “CleanHub encourages people to care about their surroundings. It
             feels good to contribute to a cleaner city.”
           </p>

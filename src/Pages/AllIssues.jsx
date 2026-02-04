@@ -73,12 +73,12 @@ const AllIssues = () => {
       </div>
 
       {/* Search + Filters */}
-      <div className="w-11/12 mx-auto mb-10 flex flex-col md:flex-row items-center justify-center gap-5">
+      <div className="w-11/12 mx-auto text-[#464646] mb-10 flex flex-col md:flex-row items-center justify-center gap-5">
         {/* Search */}
         <input
           type="text"
           placeholder="Search by title or location..."
-          className="input input-bordered w-full max-w-md text-black"
+          className="input input-bordered text-[#464646] w-full max-w-md "
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
@@ -88,7 +88,7 @@ const AllIssues = () => {
 
         {/* Category */}
         <select
-          className="select select-bordered text-black w-full max-w-xs"
+          className="select select-bordered  w-full max-w-xs"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
@@ -106,7 +106,7 @@ const AllIssues = () => {
 
         {/* Status */}
         <select
-          className="select select-bordered text-black w-full max-w-xs"
+          className="select select-bordered  w-full max-w-xs"
           value={status}
           onChange={(e) => {
             setStatus(e.target.value);
@@ -121,7 +121,7 @@ const AllIssues = () => {
 
         {/* Sorting */}
         <select
-          className="select select-bordered text-black w-full max-w-xs"
+          className="select select-bordered  w-full max-w-xs"
           value={sortBy}
           onChange={(e) => {
             setSortBy(e.target.value);
