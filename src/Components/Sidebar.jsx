@@ -15,9 +15,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         className={`
           fixed
           left-0
-          top-16
+          top-0
           w-64
-          h-[calc(100vh-4rem)]
+          h-screen
           bg-zinc-900 text-white
           z-50
           flex flex-col

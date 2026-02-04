@@ -10,12 +10,12 @@ const DashboardLayout = () => {
     <div className="min-h-screen bg-zinc-100 dark:bg-zinc-900">
       {/* <Navbar onMenuClick={() => setIsOpen(true)} /> */}
 
-      <div className="flex ">
+      <div className="">
         {/* Sidebar takes its own width */}
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
 
         {/* Main content */}
-        <main className=" p-6 ml-0 md:ml-64 min-h-screen">
+        <main className=" p-6 md:ml-64 min-h-screen">
           <Outlet />
         </main>
       </div>
