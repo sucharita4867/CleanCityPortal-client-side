@@ -14,7 +14,7 @@ The main goal of this project is to provide a **simple and user-friendly platfor
 
 ## 🌐 Live Project Link
 
-- **Live Website: https://dreamy-concha-e69351.netlify.app/
+- *Live Website: https://dreamy-concha-e69351.netlify.app
 ---
 
 ## ✨ Core Features
