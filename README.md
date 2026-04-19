@@ -35,7 +35,7 @@ The main goal of this project is to provide a **simple and user-friendly platfor
 - JavaScript
 - HTML5
 - CSS3
-- Tailwind CSS (if used)
+- Tailwind CSS 
 - DaisyUI
 
 ---
