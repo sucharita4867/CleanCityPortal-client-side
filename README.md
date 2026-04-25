@@ -53,7 +53,7 @@ The main goal of this project is to provide a **simple and user-friendly platfor
 
 Follow the steps below to run this project on your local machine:
 
-### 1️⃣ Clone the Repository
+### Clone the Repository
 ```bash
 https://github.com/sucharita4867/CleanCityPortal-client-side.git
 
