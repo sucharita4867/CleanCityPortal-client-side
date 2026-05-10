@@ -4,7 +4,7 @@
 
 *CleanCityPortal is a client-side web application where users can report not only road breakages but also any kind of city-related problems. Users can visit the website to add issues with relevant details and images, helping authorities and communities identify and address problems efficiently.
 
----
+--
 
 ## 🎯 Purpose
 
